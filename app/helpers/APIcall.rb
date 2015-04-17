@@ -27,7 +27,7 @@ class FourSquare
     @options = { query: {client_id: "XFMFMCH3CTS0SLTMBQ2KDTFHVJFNPWEPIQU151PPJF5RUZAF", client_secret: "NIIUDV3OY5UE5TGZBODQRPS351IVGW5532CV5E4QCQ1VU4CH", v:20150403} }
   end
 
-  def search_restaurant(name) #get venue id from the search
+  def select_restaurant(venue_search) #get venue id from the search
 
   end
 
@@ -46,27 +46,32 @@ class FourSquare
   end
 end
 
+def get_restaurant_names(venue,place)
+  results_hash = {}
+  venue_search(venue,place)
+end
+
 # stack_exchange = StackExchange.new("stackoverflow", 1)
 # puts stack_exchange.questions
 # puts stack_exchange.users
 
-foursquare = FourSquare.new
+# foursquare = FourSquare.new
 
-# p foursquare.venue_tips('40a55d80f964a52020f31ee3', {sort: 'popular', limit: 10})
+# # p foursquare.venue_tips('40a55d80f964a52020f31ee3', {sort: 'popular', limit: 10})
 
-# p foursquare.venue_menu('40a55d80f964a52020f31ee3')
+# # p foursquare.venue_menu('40a55d80f964a52020f31ee3')
 
-p results = foursquare.venue_search("Marlowe", "San Francisco, CA")
-results_hash = {}
-results["response"]["venues"].each do|venue|
-  # p "*"*99
-  # p venue
-  if venue["categories"][0]["name"].include?("Restaurant")
-    results_hash[venue["name"]] = venue["id"]
-  end
-end
+# p results = foursquare.venue_search("Marlowe", "San Francisco, CA")
+# results_hash = {}
+# results["response"]["venues"].each do|venue|
+#   # p "*"*99
+#   # p venue
+#   if venue["categories"][0]["name"].include?("Restaurant")
+#     results_hash[venue["name"]] = venue["id"]
+#   end
+# end
 
-p results_hash
+# p results_hash
 
 # results["response"]["venues"].each{|venue| p venue["categories"][0]["name"] if venue["categories"][0]["name"].include?("Restaurant")}
 
