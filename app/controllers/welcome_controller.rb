@@ -46,13 +46,13 @@ class WelcomeController < ApplicationController
 
     @dishnames.each do |dish|
       @reviews.each do |review|
-        if review.include?(dish)
+        if review.downcase.include?(dish.downcase)
           @match_array.push(dish)
         end
       end
     end
 
-    render :json => {tips: @reviews, menu: @dishnames}
+    render :json => {tips: @match_array, allreviews: @reviews, menu: @dishnames}
   end
 
   private
