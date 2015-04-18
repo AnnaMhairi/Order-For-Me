@@ -29,7 +29,7 @@ class WelcomeController < ApplicationController
     results["response"]["venues"].each do|venue|
 
     if venue["categories"][0]["name"].include?("Restaurant")
-      results_hash[venue["name"]] = venue["id"]
+      results_hash[venue["id"]] = venue["name"]
       end
     end
     return results_hash

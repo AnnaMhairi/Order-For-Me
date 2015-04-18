@@ -1,1 +1,7 @@
-<%= @x %>
+<ul>
+  <% @x.each do |key, value| %>
+    <li>
+      <a data-id="<%=key%>" href="/"><%=value%></a>
+    </li>
+  <% end%>
+</ul>
