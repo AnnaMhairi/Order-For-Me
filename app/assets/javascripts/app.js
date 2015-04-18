@@ -17,7 +17,7 @@ $(document).on('page:change',function() {
 
   $('body').on('click', '.clarified_restaurant', function(event){
     event.preventDefault();
-    debugger
+    // debugger
     var request = $.ajax({
       url: $(this).attr('href'),
       type: 'GET',
@@ -26,12 +26,13 @@ $(document).on('page:change',function() {
     })
 
     request.done(function(data) {
+      debugger
       console.log(data.tips)
       console.log(data.menu)
     })
 
     request.fail(function(data) {
-      console.log("fail")
+      alert("Sorry, This Restaurant Does Not Have A Menu Online")
     })
   })
 });

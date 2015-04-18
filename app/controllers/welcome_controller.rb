@@ -19,16 +19,40 @@ class WelcomeController < ApplicationController
 
   def show #THIS IS WHERE WE ARE RETRIEVING THE MENU AND REVIEWS FOR COMPARISON ==== MUST CREATE API METHODS TO RETRIEVE MENU AND REVIEWS(TIPS)
     @foursquareapi = FourSquare.new
-    @tips = @foursquareapi.venue_tips(params[:id], {sort: 'popular', limit: 10})
+    @tips = @foursquareapi.venue_tips(params[:id], {sort: 'popular'})
     @menu = @foursquareapi.venue_menu(params[:id])
 
-    p "*"*99
-    p @tips
-    p "*"*99
-    p @menu
-    p "*"*99
+    @dishnames = []
+    @reviews = []
 
-    render :json => {tips: @tips, menu: @menu}
+    # p "*"*99
+    # @menu["response"]["menu"]["menus"]["items"].each do |menus|
+    #   @dishnames.push(menus["entries"]["items"])
+    # end
+    # p "*"*99
+    @tips["response"]["tips"]["items"].each do |review|
+      @reviews.push(review["text"])
+    end
+
+    @menu["response"]["menu"]["menus"]["items"].each do |menus|
+      menus["entries"]["items"].each do |courses|
+        courses["entries"]["items"].each do |dishes|
+          @dishnames.push(dishes["name"])
+        end
+      end
+    end
+
+    @match_array = []
+
+    @dishnames.each do |dish|
+      @reviews.each do |review|
+        if review.include?(dish)
+          @match_array.push(dish)
+        end
+      end
+    end
+
+    render :json => {tips: @reviews, menu: @dishnames}
   end
 
   private
