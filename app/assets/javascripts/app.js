@@ -30,6 +30,7 @@ $(document).on('page:change',function() {
       console.log(data.tips)
       console.log(data.allreviews)
       console.log(data.menu)
+      console.log(data.finalz)
       // console.log(data.menu)
     })
 

@@ -46,13 +46,31 @@ class WelcomeController < ApplicationController
 
     @dishnames.each do |dish|
       @reviews.each do |review|
-        if review.downcase.include?(dish.downcase)
-          @match_array.push(dish)
+        review.downcase.split(" ").each do |review_word|
+          dish.downcase.split(" ").each do |dish_word|
+              if review_word.include?(dish_word)
+                @match_array.push(dish)
+              end
+            end
+          end
         end
       end
+
+    @match_hash = Hash.new(0)
+
+    @match_array.each do |counter|
+      @match_hash[counter] += 1
     end
 
-    render :json => {tips: @match_array, allreviews: @reviews, menu: @dishnames}
+    "*"*99
+    @x = @match_hash.sort_by { |key, value| value }.reverse
+    "*"*99
+    @match_hash = Hash[@x]
+    p "*"*99
+    p @match_hash
+    p "*"*99
+
+    render :json => {tips: @match_array, allreviews: @reviews, menu: @dishnames, finalz: @match_hash}
   end
 
   private
