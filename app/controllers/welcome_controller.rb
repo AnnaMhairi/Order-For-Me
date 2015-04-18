@@ -18,14 +18,17 @@ class WelcomeController < ApplicationController
   end
 
   def show #THIS IS WHERE WE ARE RETRIEVING THE MENU AND REVIEWS FOR COMPARISON ==== MUST CREATE API METHODS TO RETRIEVE MENU AND REVIEWS(TIPS)
+    @foursquareapi = FourSquare.new
+    @tips = @foursquareapi.venue_tips(params[:id], {sort: 'popular', limit: 10})
+    @menu = @foursquareapi.venue_menu(params[:id])
+
     p "*"*99
-    p params[:id]
-    @y = params[:id]
+    p @tips
     p "*"*99
-    p @y
+    p @menu
     p "*"*99
 
-    render :json => {y: @y}
+    render :json => {tips: @tips, menu: @menu}
   end
 
   private

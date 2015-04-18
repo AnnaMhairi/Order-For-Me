@@ -26,7 +26,8 @@ $(document).on('page:change',function() {
     })
 
     request.done(function(data) {
-      console.log(data.y)
+      console.log(data.tips)
+      console.log(data.menu)
     })
 
     request.fail(function(data) {
