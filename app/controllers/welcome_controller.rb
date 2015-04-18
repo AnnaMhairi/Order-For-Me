@@ -17,7 +17,16 @@ class WelcomeController < ApplicationController
     render :json => {x: @x}
   end
 
+  def show #THIS IS WHERE WE ARE RETRIEVING THE MENU AND REVIEWS FOR COMPARISON ==== MUST CREATE API METHODS TO RETRIEVE MENU AND REVIEWS(TIPS)
+    p "*"*99
+    p params[:id]
+    @y = params[:id]
+    p "*"*99
+    p @y
+    p "*"*99
 
+    render :json => {y: @y}
+  end
 
   private
 

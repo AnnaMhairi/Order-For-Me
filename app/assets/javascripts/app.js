@@ -10,9 +10,27 @@ $(document).on('page:change',function() {
     })
     request.done(function(data) {
       for(var key in data.x) {
-        $('.results ol').append('<li><a data-id="'+key+'" href="/">'+data.x[key]+'</a></li>')
+        $('.results ol').append('<li><a class="clarified_restaurant" data-id="'+key+'" href="/welcome/'+key+'">'+data.x[key]+'</a></li>')
       }
     })
   });
 
+  $('body').on('click', '.clarified_restaurant', function(event){
+    event.preventDefault();
+    debugger
+    var request = $.ajax({
+      url: $(this).attr('href'),
+      type: 'GET',
+      dataType: 'JSON',
+      // data: {id: $(this).data("id")}
+    })
+
+    request.done(function(data) {
+      console.log(data.y)
+    })
+
+    request.fail(function(data) {
+      console.log("fail")
+    })
+  })
 });
