@@ -4,6 +4,7 @@
 # https://api.foursquare.com/v2/venues/40a55d80f964a52020f31ee3/tips?sort=recent&oauth_token=
 require 'httparty'
 
+
 # venue_id = "40a55d80f964a52020f31ee3"
 # KUINKNOWGLV0U2XU2BSHLG34BZTZPQGGPQDGERTYQFOAC11K
 
@@ -24,12 +25,12 @@ class FourSquare
   base_uri 'https://api.foursquare.com/v2'
 
   def initialize
-    @options = { query: {client_id: "XFMFMCH3CTS0SLTMBQ2KDTFHVJFNPWEPIQU151PPJF5RUZAF", client_secret: "NIIUDV3OY5UE5TGZBODQRPS351IVGW5532CV5E4QCQ1VU4CH", v:20150403} }
+    @options = { query: {client_id: ENV['client_id'], client_secret: ENV['client_secret'], v:20150403} }
   end
 
-  def select_restaurant(venue_search) #get venue id from the search
+  # def select_restaurant(venue_search) #get venue id from the search
 
-  end
+  # end
 
   def venue_tips(venue_id, options)
     new_options = {query: @options[:query].merge(options)}
