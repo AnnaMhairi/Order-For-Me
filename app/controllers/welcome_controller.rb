@@ -14,7 +14,7 @@ class WelcomeController < ApplicationController
     # p params[:citystate]
     @x = get_names(params[:restaurant],params[:citystate])
     # @x
-    render :create
+    render :json => {x: @x}
   end
 
 
