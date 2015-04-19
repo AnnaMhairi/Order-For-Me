@@ -41,7 +41,8 @@ $(document).on('page:change',function() {
       // console.log(data.allreviews)
       // console.log(data.menu)
       // console.log(data.finalz)
-      // // console.log(data.menu)
+      console.log(data.venue_url)
+      console.log(data.tagz)
     })
 
     request.fail(function(data) {

@@ -45,12 +45,16 @@ class FourSquare
     new_options= {query: @options[:query].merge({query: venue, near: place, section: 'food'})}
     self.class.get("/venues/search", new_options)
   end
+
+  def venue_url(venue_id)
+    self.class.get("/venues/#{venue_id}", @options)
+  end
 end
 
-def get_restaurant_names(venue,place)
-  results_hash = {}
-  venue_search(venue,place)
-end
+  def get_restaurant_names(venue,place)
+    results_hash = {}
+    venue_search(venue,place)
+  end
 
 # stack_exchange = StackExchange.new("stackoverflow", 1)
 # puts stack_exchange.questions

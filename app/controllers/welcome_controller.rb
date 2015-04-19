@@ -1,4 +1,6 @@
 require 'APICall'
+require 'nokogiri'
+require 'open-uri'
 
 class WelcomeController < ApplicationController
   # include APICall
@@ -12,7 +14,8 @@ class WelcomeController < ApplicationController
   def create
     # p params[:restaurant]
     # p params[:citystate]
-    @x = get_names(params[:restaurant],params[:citystate])
+    api_search = foursquare_search(params[:restaurant], params[:citystate])
+    @x = get_names(api_search)
     # @x
     render :json => {x: @x}
   end
@@ -24,14 +27,16 @@ class WelcomeController < ApplicationController
     @foursquareapi = FourSquare.new
     @tips = @foursquareapi.venue_tips(params[:id], {sort: 'popular'})
     @menu = @foursquareapi.venue_menu(params[:id])
+    @url = @foursquareapi.venue_url(params[:id])
 
     @dishnames = []
     @reviews = []
 
+    # GET ALL REVIEW TEXT
     @tips["response"]["tips"]["items"].each do |review|
       @reviews.push(review["text"])
     end
-
+    # GET ALL MENU ITEM TEXT
     @menu["response"]["menu"]["menus"]["items"].each do |menus|
       menus["entries"]["items"].each do |courses|
         courses["entries"]["items"].each do |dishes|
@@ -39,6 +44,12 @@ class WelcomeController < ApplicationController
         end
       end
     end
+
+    # GET ALL KEYWORD TEXT USING NOKOGIRI
+      @venue_url = @url["response"]["venue"]["canonicalUrl"]
+      doc = Nokogiri::HTML(open(@venue_url))
+      @tags = doc.xpath("//div[contains(@class,'tastes')]/ul/li[contains(@class,'taste')]/span[contains(@class,'pill')]").collect {|node| node.text.strip}
+
 
     @match_array = []
 
@@ -134,24 +145,38 @@ class WelcomeController < ApplicationController
 
 
 
-    render :json => {tips: @tips, reviews: @review_hash, finalz: @match_hash}
+    render :json => {tips: @tips, reviews: @review_hash, finalz: @match_hash, venue_url: @venue_url, tagz: @tags}
   end
 
   private
 
-  def get_names(restaurant_name, location)
+  def foursquare_search(restaurant_name, location)
     @foursquareapi = FourSquare.new
-    results_hash = {}
-    @foursquareapi
-    results = @foursquareapi.venue_search(restaurant_name, location)
-    results["response"]["venues"].each do|venue|
+    @api_results = @foursquareapi.venue_search(restaurant_name, location)
+    return @api_results
+  end
 
+  def get_names(api_result)
+    @results_hash = {}
+    @results = api_result
+    @results["response"]["venues"].each do|venue|
     if venue["categories"][0]["name"].include?("Restaurant")
-      results_hash[venue["id"]] = venue["name"]
+      @results_hash[venue["id"]] = venue["name"]
       end
     end
-    return results_hash
+    return @results_hash
   end
+
+  # def get_url(api_result)
+  #   @search_results = api_result
+  #   @url_array = []
+  #   @search_results["response"]["venues"].each do |venue|
+  #     venue["categories"].each do |category|
+  #       @url_array.push(category["icon"]["prefix"])
+  #     end
+  #   end
+  #   return @url_array
+  # end
 
   # def createfs
   #   @foursquareapi = FourSquare.new
