@@ -1,8 +1,8 @@
-// Place all the styles related to the welcome controller here.
+/*// Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// You can use Sass (SCSS) here: http://sass-lang.com/*/
 
-* {
+/** {
   font-family: "museo-sans";
   font-weight: 700;
   color: black;
@@ -84,5 +84,5 @@ li {
 
 .second-section {
   height: 33%;
-}
+}*/
 

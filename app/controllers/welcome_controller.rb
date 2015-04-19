@@ -46,16 +46,34 @@ class WelcomeController < ApplicationController
       @reviews.each do |review|
         review.downcase.split(" ").each do |review_word|
           dish.downcase.split(" ").each do |dish_word|
-
-
-              if review_word.include?(dish_word) #&& dish_word != "and" && dish_word != "or" && dish_word != "in"
-                @match_array.push(dish)
-              end
+            if review_word.include?(dish_word) #&& dish_word != "and" && dish_word != "or" && dish_word != "in"
+              @match_array.push(dish)
             end
           end
         end
       end
+    end
 
+  # @match_reviews = {}
+  # @review_array = []
+
+  # @dishnames.each do |dish|
+  #   @reviews.each do |review|
+  #     if @review_array.include?(review) == false
+  #       if review.include?(dish)
+  #         @match_reviews[dish] = @review_array
+  #         @review_array.push(review)
+  #       end
+  #     end
+  #   end
+  # end
+
+
+
+
+
+    # p @match_reviews
+    # p @match_reviews
    # @dishnames.each do |dish|
    #    @reviews.each do |review|
    #      review.downcase.split(" ").each_with_index do |review_word ,index|
@@ -90,7 +108,33 @@ class WelcomeController < ApplicationController
     "*"*99
     @match_hash = Hash[@x]
 
-    render :json => {matches: @match_array, allreviews: @reviews, menu: @dishnames, finalz: @match_hash}
+
+    # @review_hash = Hash.new(Array.new)
+
+    # @match_hash.keys.each do |menu_item|
+    #   @review_hash[menu_item]
+    #   menu_item.split(" ").each do |item|
+    #     @reviews.each do |review|
+    #       if review.include?(item) && @review_hash.include?(review) == false
+    #         # @item_position = i
+    #         # @review_position = i
+    #         @review_hash[menu_item].push(review)
+    #       end
+    #     end
+    #     @review_hash[menu_item] = @review_hash[menu_item].uniq
+    #   end
+    # end
+
+    # p @review_hash
+
+
+
+
+
+
+
+
+    render :json => {tips: @tips, reviews: @review_hash, finalz: @match_hash}
   end
 
   private
@@ -113,4 +157,19 @@ class WelcomeController < ApplicationController
   #   @foursquareapi = FourSquare.new
   # end
 end
+
+# @review_hash = Hash.new(Array.new)
+
+# @match_hash.keys.each do |menu_item|
+#   @review_hash[menu_item]
+#   @reviews.each do |review|
+#     menu_item.split(" ").each do |item|
+#     if review.include?(item)
+#       @review_hash[menu_item].push(review)
+#     end
+#   end
+#   @review_hash[menu_item] = @review_hash[menu_item].uniq
+# end
+
+# @review_hash
 

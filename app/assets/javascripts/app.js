@@ -26,12 +26,22 @@ $(document).on('page:change',function() {
     })
 
     request.done(function(data) {
-      // debugger
-      // console.log(data.matches)
-      console.log(data.allreviews)
-      console.log(data.menu)
-      console.log(data.finalz)
+      array = []
+      for (var key in data.finalz) {
+        array.push(key)
+      }
+
+      // console.log(data.tips)
+      console.log(data.reviews)
+      for (var i=0; i < 5; i++) {
+        $('.mid-section').append('<li><a href="">'+array[i]+'</a></li>')
+      }
+      // // debugger
+      // // console.log(data.matches)
+      // console.log(data.allreviews)
       // console.log(data.menu)
+      // console.log(data.finalz)
+      // // console.log(data.menu)
     })
 
     request.fail(function(data) {
