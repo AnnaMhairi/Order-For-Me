@@ -17,6 +17,9 @@ class WelcomeController < ApplicationController
     render :json => {x: @x}
   end
 
+
+  #options: 1. check for single word match and add dish to count 2. check for exact match and only then add dish to count 3. check for 2 words in a row match and add that dish to count
+
   def show #THIS IS WHERE WE ARE RETRIEVING THE MENU AND REVIEWS FOR COMPARISON ==== MUST CREATE API METHODS TO RETRIEVE MENU AND REVIEWS(TIPS)
     @foursquareapi = FourSquare.new
     @tips = @foursquareapi.venue_tips(params[:id], {sort: 'popular'})
@@ -25,11 +28,6 @@ class WelcomeController < ApplicationController
     @dishnames = []
     @reviews = []
 
-    # p "*"*99
-    # @menu["response"]["menu"]["menus"]["items"].each do |menus|
-    #   @dishnames.push(menus["entries"]["items"])
-    # end
-    # p "*"*99
     @tips["response"]["tips"]["items"].each do |review|
       @reviews.push(review["text"])
     end
@@ -48,7 +46,9 @@ class WelcomeController < ApplicationController
       @reviews.each do |review|
         review.downcase.split(" ").each do |review_word|
           dish.downcase.split(" ").each do |dish_word|
-              if review_word.include?(dish_word)
+
+
+              if review_word.include?(dish_word) #&& dish_word != "and" && dish_word != "or" && dish_word != "in"
                 @match_array.push(dish)
               end
             end
@@ -56,21 +56,41 @@ class WelcomeController < ApplicationController
         end
       end
 
+   # @dishnames.each do |dish|
+   #    @reviews.each do |review|
+   #      review.downcase.split(" ").each_with_index do |review_word ,index|
+   #        dish.downcase.split(" ").each_with_index do |dish_word, i|
+
+
+   #            if review[index] == dish[i] && review[index+1] == dish[i+1]
+
+   #              # .include?(dish_word) && dish_word != "and" && dish_word != "or" && dish_word != "in" && dish_word != "thai"
+   #              @match_array.push(dish)
+   #            elsif review[index] == dish[i] && review[index+1] == dish[i+1] && review[index+2] == dish[i+2]
+
+   #              # .include?(dish_word) && dish_word != "and" && dish_word != "or" && dish_word != "in" && dish_word != "thai"
+   #              @match_array.push(dish)
+   #            elsif dish.length == 1 && dish_word == review_word
+   #              @match_array.push(dish)
+   #            end
+   #          end
+   #        end
+   #      end
+   #    end
+
+
     @match_hash = Hash.new(0)
 
     @match_array.each do |counter|
       @match_hash[counter] += 1
     end
 
-    "*"*99
+
     @x = @match_hash.sort_by { |key, value| value }.reverse
     "*"*99
     @match_hash = Hash[@x]
-    p "*"*99
-    p @match_hash
-    p "*"*99
 
-    render :json => {tips: @match_array, allreviews: @reviews, menu: @dishnames, finalz: @match_hash}
+    render :json => {matches: @match_array, allreviews: @reviews, menu: @dishnames, finalz: @match_hash}
   end
 
   private

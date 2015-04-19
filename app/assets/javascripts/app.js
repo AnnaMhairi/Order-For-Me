@@ -27,7 +27,7 @@ $(document).on('page:change',function() {
 
     request.done(function(data) {
       // debugger
-      console.log(data.tips)
+      // console.log(data.matches)
       console.log(data.allreviews)
       console.log(data.menu)
       console.log(data.finalz)
