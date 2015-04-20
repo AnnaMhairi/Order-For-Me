@@ -25,7 +25,7 @@ class WelcomeController < ApplicationController
 
   def show #THIS IS WHERE WE ARE RETRIEVING THE MENU AND REVIEWS FOR COMPARISON ==== MUST CREATE API METHODS TO RETRIEVE MENU AND REVIEWS(TIPS)
     @foursquareapi = FourSquare.new
-    @tips = @foursquareapi.venue_tips(params[:id], {sort: 'popular'})
+    @tips = @foursquareapi.venue_tips(params[:id], {sort: 'popular', limit: 200})
     @menu = @foursquareapi.venue_menu(params[:id])
     @url = @foursquareapi.venue_url(params[:id])
 
@@ -138,14 +138,18 @@ class WelcomeController < ApplicationController
 
     # p @review_hash
 
+    #HASH WITH KEY TAG AND VALUE MENU ITEM ARRAY
+    @menu_item_to_tag = menu_tag_association(@dishnames, @tags)
+    #HASH WITH KEY TAG WORD AND VALUE ARRAY OF REVIEWS MENTIONING TAG WORD
+    @tag_to_reviews = tag_review_association(@tags, @reviews)
+    #HASH WITH MENU ITEM AS KEY AND ARRAY OF REVIEWS FOR THAT MENU ITEM AS THE VALUES
+    @menu_with_reviews = menu_to_review_association(@tag_to_reviews, @menu_item_to_tag)
 
+    # @compare_tag_to_reviews = check_review_for_tag(@reviews, @menu_item_to_tag)
 
+    # @relevant_reviews = return_relevant_reviews(@reviews, @compare_tag_to_reviews)
 
-
-
-
-
-    render :json => {tips: @tips, reviews: @review_hash, finalz: @match_hash, venue_url: @venue_url, tagz: @tags}
+    render :json => {tips: @tips, reviews: @reviews, finalz: @match_hash, venue_url: @venue_url, tagz: @tags, most_reviewed_dishes: @menu_item_to_tag, tag_with_reviews: @tag_to_reviews, review_list_per_item: @menu_with_reviews}
   end
 
   private
@@ -167,6 +171,93 @@ class WelcomeController < ApplicationController
     return @results_hash
   end
 
+  def menu_tag_association(dishnames, tags)
+    relevant_tags = []
+    relevant_tags_to_dishes = Hash.new()
+    dishnames.each do |dish|
+      relevant_tags_to_dishes[dish] = []
+      tags.each do |tag|
+        if dish.downcase.include?(tag.downcase) || "#{dish}s".downcase.include?(tag.downcase)
+          # relevant_tags.push(tag)
+          relevant_tags_to_dishes[dish].push(tag)
+        end
+      end
+    end
+    relevant_array_of_tags_to_dishes = relevant_tags_to_dishes.sort_by { |key, value| value.length }.reverse
+    "*"*99
+    relevant_tags_to_dishes = Hash[relevant_array_of_tags_to_dishes]
+    return relevant_tags_to_dishes
+  end
+
+  def tag_review_association(tags, reviews)
+    relevant_reviews_to_tags = {}
+
+    tags.each do |tag|
+      non_plural_tag = tag[0..-2]
+      relevant_reviews_to_tags[tag] = []
+      reviews.each do |review|
+        p "*"*99
+        p review
+        p "*"*99
+        p tag
+
+        if review.downcase.include?(tag.downcase) || review.downcase.include?(non_plural_tag.downcase)
+          relevant_reviews_to_tags[tag].push(review)
+        end
+      end
+    end
+    return relevant_reviews_to_tags
+  end
+
+  def menu_to_review_association(tagreview_association, menutag_association)
+    @menu_item_with_reviews = Hash.new()
+    menutag_association.each do |menu_item, tags_for_menu_item|
+      @menu_item_with_reviews[menu_item] = []
+      tagreview_association.each do |each_of_all_tags, reviews_mentioning_tag|
+        tags_for_menu_item.each do |tag_for_menu_item|
+          reviews_mentioning_tag.each do |review_mentioning_tag|
+            if tag_for_menu_item.downcase.include?(each_of_all_tags.downcase)
+            #MAKE NEW HASH WITH KEY OF MENU ITEM AND VALUE BEING THE REVIEWS FOR THAT MENU ITEM
+              @menu_item_with_reviews[menu_item].push(review_mentioning_tag)
+            end
+          end
+        end
+      end
+    end
+    @menu_item_with_reviews = @menu_item_with_reviews.sort_by { |key, value| p value.length }.reverse
+    @menu_item_with_reviews = Hash[@menu_item_with_reviews]
+    return @menu_item_with_reviews
+  end
+
+  # def check_review_for_tag(reviews, menu_tag_hash)
+  #   top_dishes = []
+  #   top_dish_reviews = []
+  #   reviews.each do |review|
+  #     menu_tag_hash.each do |item, tags|
+  #       tags.each do |tag|
+  #         if review.downcase.include?(tag.downcase)
+  #           top_dishes.push(item)
+  #           top_dish_reviews.push(review)
+  #         end
+  #       end
+  #     end
+  #   end
+  #   @top = Hash.new(0)
+
+  #   top_dishes.each do |counter|
+  #     @top[counter] += 1
+  #   end
+
+  #   @x = @top.sort_by { |key, value| value }.reverse
+  #   @top = Hash[@x]
+  #   return [@top, top_dish_reviews]
+  # end
+
+  # def return_relevant_reviews(reviews, top_dish_count_hash)
+  #   relevant_reviews = []
+  #   reviews.each do |review|
+
+  # end
   # def get_url(api_result)
   #   @search_results = api_result
   #   @url_array = []

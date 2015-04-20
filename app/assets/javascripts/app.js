@@ -17,32 +17,25 @@ $(document).on('page:change',function() {
 
   $('body').on('click', '.clarified_restaurant', function(event){
     event.preventDefault();
-    // debugger
     var request = $.ajax({
       url: $(this).attr('href'),
       type: 'GET',
       dataType: 'JSON',
-      // data: {id: $(this).data("id")}
     })
 
     request.done(function(data) {
+      // console.log(data.most_reviewed_dishes)
+      console.log(data.tagz)
+      console.log(data.most_reviewed_dishes)
+      console.log(data.tag_with_reviews)
+      console.log(data.review_list_per_item)
       array = []
-      for (var key in data.finalz) {
+      for (var key in data.most_reviewed_dishes) {
         array.push(key)
       }
-
-      // console.log(data.tips)
-      console.log(data.reviews)
       for (var i=0; i < 5; i++) {
         $('.mid-section').append('<li><a href="">'+array[i]+'</a></li>')
       }
-      // // debugger
-      // // console.log(data.matches)
-      // console.log(data.allreviews)
-      // console.log(data.menu)
-      // console.log(data.finalz)
-      console.log(data.venue_url)
-      console.log(data.tagz)
     })
 
     request.fail(function(data) {
