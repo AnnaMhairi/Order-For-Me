@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :welcome do
   end
 
+  resources :restaurants do
+  end
+
   get 'welcome/menu'
   root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.

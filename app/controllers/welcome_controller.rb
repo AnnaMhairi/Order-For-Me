@@ -9,9 +9,43 @@ class WelcomeController < ApplicationController
   end
 
   def create
+    @foursquarevenue = FourSquare.new
     api_search = foursquare_search(params[:restaurant], params[:citystate])
-    @x = get_names(api_search)
-    render :json => {x: @x}
+    @restaurant_search_results = get_names(api_search)
+    # @restaurants_with_menus = obtain_restaurants_with_menus(@restaurant_search_results)
+
+    render :json => {restaurant_search_results: @restaurant_search_results, api_search_results: api_search, venue_objects: @restaurants_with_menus}
+  end
+
+  def obtain_restaurants_with_menus(result_of_restaurant_search)
+    restaurants_with_menus = {}
+    result_of_restaurant_search.each do |id, name|
+      restaurants_with_menus[id]
+      if @foursquarevenue.venue_menu(id)["response"]["menu"]["menus"]["count"] >= 1
+        restaurants_with_menus[id] = name
+      end
+    end
+    return restaurants_with_menus
+  end
+
+  def obtain_reviews_and_put_in_array(reviews_object)
+    reviews = []
+    reviews_object["response"]["tips"]["items"].each do |review|
+      reviews.push(review["text"])
+    end
+    return reviews
+  end
+
+  def obtain_dish_names_and_put_in_array(menu_object)
+    dishnames = []
+    menu_object["response"]["menu"]["menus"]["items"].each do |menus|
+      menus["entries"]["items"].each do |courses|
+        courses["entries"]["items"].each do |dishes|
+          dishnames.push(dishes["name"])
+        end
+      end
+    end
+    return dishnames
   end
 
   def show
@@ -20,26 +54,16 @@ class WelcomeController < ApplicationController
     @menu = @foursquareapi.venue_menu(params[:id])
     @url = @foursquareapi.venue_url(params[:id])
 
-    @dishnames = []
-    @reviews = []
-
     # GET ALL REVIEW TEXT
-    @tips["response"]["tips"]["items"].each do |review|
-      @reviews.push(review["text"])
-    end
+    @reviews = obtain_reviews_and_put_in_array(@tips)
+
     # GET ALL MENU ITEM TEXT
-    @menu["response"]["menu"]["menus"]["items"].each do |menus|
-      menus["entries"]["items"].each do |courses|
-        courses["entries"]["items"].each do |dishes|
-          @dishnames.push(dishes["name"])
-        end
-      end
-    end
+    @dishnames = obtain_dish_names_and_put_in_array(@menu)
 
     # GET ALL KEYWORD TEXT USING NOKOGIRI
-      @venue_url = @url["response"]["venue"]["canonicalUrl"]
-      doc = Nokogiri::HTML(open(@venue_url))
-      @tags = doc.xpath("//div[contains(@class,'tastes')]/ul/li[contains(@class,'taste')]/span[contains(@class,'pill')]").collect {|node| node.text.strip}
+    @venue_url = @url["response"]["venue"]["canonicalUrl"]
+    doc = Nokogiri::HTML(open(@venue_url))
+    @tags = doc.xpath("//div[contains(@class,'tastes')]/ul/li[contains(@class,'taste')]/span[contains(@class,'pill')]").collect {|node| node.text.strip}
 
     #HASH WITH KEY TAG AND VALUE MENU ITEM ARRAY
     @menu_item_to_tag = menu_tag_association(@dishnames, @tags)
@@ -48,7 +72,7 @@ class WelcomeController < ApplicationController
     #HASH WITH MENU ITEM AS KEY AND ARRAY OF REVIEWS FOR THAT MENU ITEM AS THE VALUES
     @menu_with_reviews = menu_to_review_association(@tag_to_reviews, @menu_item_to_tag)
 
-    render :json => {review_list_per_item: @menu_with_reviews}
+    render :json => {review_list_per_item: @menu_with_reviews, menu: @menu}
   end
 
   private
@@ -116,7 +140,7 @@ class WelcomeController < ApplicationController
         end
       end
     end
-    @menu_item_with_reviews = @menu_item_with_reviews.sort_by { |key, value| p value.length }.reverse
+    @menu_item_with_reviews = @menu_item_with_reviews.sort_by { |key, value| value.length }.reverse
     @menu_item_with_reviews = Hash[@menu_item_with_reviews]
     return @menu_item_with_reviews
   end
