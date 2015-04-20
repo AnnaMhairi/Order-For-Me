@@ -24,13 +24,22 @@ $(document).on('page:change',function() {
     })
 
     request.done(function(data) {
-      array = []
+      var array = []
+      var vals = []
       for (var key in data.review_list_per_item) {
         array.push(key)
+        vals.push(data.review_list_per_item[key])
       }
+
       for (var i=0; i < 5; i++) {
         $('.mid-section').append('<li><a href="">'+array[i]+'</a></li>')
+        $('.container').append('<p>'+array[i]+'</p><ul class="list comment_'+i+'"></ul>')
+        for(var idx=0; idx<vals[i].length; idx++){
+          $('.comment_'+i).append('<li>'+vals[i][idx]+'</li>')
+
+        }
       }
+      //append reviews to div and set default as hidden
     })
 
     request.fail(function(data) {
