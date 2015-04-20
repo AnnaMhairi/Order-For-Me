@@ -24,13 +24,8 @@ $(document).on('page:change',function() {
     })
 
     request.done(function(data) {
-      // console.log(data.most_reviewed_dishes)
-      console.log(data.tagz)
-      console.log(data.most_reviewed_dishes)
-      console.log(data.tag_with_reviews)
-      console.log(data.review_list_per_item)
       array = []
-      for (var key in data.most_reviewed_dishes) {
+      for (var key in data.review_list_per_item) {
         array.push(key)
       }
       for (var i=0; i < 5; i++) {
