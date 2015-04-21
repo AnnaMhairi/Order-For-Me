@@ -1,3 +1,7 @@
+//make events so that the user is redirected to each appropriate div
+//for example, when they click submit they will be automatically pushed down to the restaurant clarification section then an arrow will display that they can click on to redirect them to the next div of dishes then on click they'll be directed down to comments etc. etc. (make the user experience more dumb/coherent)
+
+
 $(document).on('page:change',function() {
 
   $('.restaurant_search').on('submit', function(event){
@@ -10,7 +14,7 @@ $(document).on('page:change',function() {
     })
     request.done(function(data) {
       for(var key in data.x) {
-        $('.results ol').append('<li><a class="clarified_restaurant" data-id="'+key+'" href="/welcome/'+key+'">'+data.x[key]+'</a></li>')
+        $('.service-heading').append('<li><a class="clarified_restaurant" data-id="'+key+'" href="/welcome/'+key+'">'+data.x[key]+'</a></li>')
       }
     })
   });
@@ -32,8 +36,8 @@ $(document).on('page:change',function() {
       }
 
       for (var i=0; i < 5; i++) {
-        $('.mid-section').append('<li><a href="">'+array[i]+'</a></li>')
-        $('.container').append('<p>'+array[i]+'</p><ul class="list comment_'+i+'"></ul>')
+        $('.portfolio-caption').append('<li><a href="">'+array[i]+'</a></li>')
+        $('.comments').append('<p>'+array[i]+'</p><ul class="list comment_'+i+'"></ul>')
         for(var idx=0; idx<vals[i].length; idx++){
           $('.comment_'+i).append('<li>'+vals[i][idx]+'</li>')
 
