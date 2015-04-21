@@ -21,11 +21,12 @@ class WelcomeController < ApplicationController
     @y = @x.first.data["geometry"]["location"]
     # # # p @y
     # # p "*"*99
-    z = foursquarevenue.trending_restaurants({ll: '37.7749495,-122.4194155'})
+    @z = foursquarevenue.trending_restaurants({ll: '37.7749495,-122.4194155', limit: 5, radius: 2000})
     # p "*"*99
     # p z
 
-    render :json => {restaurant_search_results: @restaurant_search_results, api_search_results: api_search,x: @y,z: z }
+
+    render :json => {restaurant_search_results: @restaurant_search_results, api_search_results: api_search,x: @y,z: @z }
 
   end
 
