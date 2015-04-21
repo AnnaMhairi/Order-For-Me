@@ -69,12 +69,12 @@ h6 {
 }
 
 .btn-primary {
-    border-color: grey;
+    border-color: black;
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #fff;
-    background-color: grey;
+    background-color: black;
 }
 
 .btn-primary:hover,
@@ -205,8 +205,9 @@ fieldset[disabled] .btn-xl.active {
 }
 
 .navbar-default .navbar-toggle {
-    border-color: grey;
-    background-color: grey;
+    border-color: black;
+    background-color: black;
+    color: white;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
@@ -289,7 +290,7 @@ header {
 }
 
 header .intro-text {
-    padding-top: 10px;
+    padding-top: 100px;
     padding-bottom: 50px;
 }
 
@@ -466,14 +467,14 @@ section h3.section-subheading {
 #portfolio .portfolio-item .portfolio-caption {
     margin: 0 auto;
     padding: 25px;
-    max-width: 200px;
-    text-align: center;
+    max-width: 400px;
+    text-align: right;
     background-color: #fff;
     opacity: .8;
-    border-radius: 20%;
-    position: absolute;
-    top: -135px;
-    left: 1019px;
+    /*border-radius: 20%;*/
+    /*position: relative;*/
+    /*top: -135px;*/
+    /*left: 1019px;*/
 }
 
 #portfolio .portfolio-item .portfolio-caption h4 {
