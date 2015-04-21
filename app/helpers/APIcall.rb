@@ -39,7 +39,13 @@ class FourSquare
   end
 
   def trending_restaurants(latitude_longtitude)
-    self.class.get("/venues/trending", @options)
+    # p "="*50
+    p "In the trending restaurants method"
+    new_options = {query: @options[:query].merge(latitude_longtitude)}
+    p "*"*99
+    p new_options
+    p "*"*99
+    self.class.get("/venues/trending", new_options)
   end
 end
 

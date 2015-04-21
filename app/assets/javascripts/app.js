@@ -2,6 +2,9 @@ $(document).on('page:change',function() {
 
   $('.restaurant_search').on('submit', function(event){
     event.preventDefault();
+    // var data = {restaurant: $('input.restaurant').val(), citystate: $('input.location').val() }
+
+    // console.log(data)
     var request = $.ajax({
       url: '/welcome',
       type: 'POST',
@@ -10,6 +13,7 @@ $(document).on('page:change',function() {
     })
     request.done(function(data) {
       console.log(data.x)
+      console.log(data.z)
       for(var key in data.restaurant_search_results) {
         $('.results ol.result_restaurants').append('<li><a class="clarified_restaurant" data-id="'+key+'" href="/welcome/'+key+'">'+data.restaurant_search_results[key]+'</a></li>')
       }
