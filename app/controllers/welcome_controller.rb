@@ -36,6 +36,9 @@ class WelcomeController < ApplicationController
       end
     end
 
+    #GET VENUE NAME
+    @name = @url["response"]["venue"]["name"]
+
     # GET ALL KEYWORD TEXT USING NOKOGIRI
       @venue_url = @url["response"]["venue"]["canonicalUrl"]
       doc = Nokogiri::HTML(open(@venue_url))

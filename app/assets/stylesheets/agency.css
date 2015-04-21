@@ -277,25 +277,26 @@ header {
     text-align: center;
     color: black;
     background-attachment: scroll;
-    background-image: url("/assets/potentialbackgroundone.jpg");
+    background-image: url("/assets/3.jpg");
     background-position: center center;
-    background-repeat: none;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
+    /*background-repeat: none;*/
+    /*-webkit-background-size: cover;*/
+    /*-moz-background-size: cover;*/
+    /*background-size: cover;*/
+    /*-o-background-size: cover;*/
 }
 
 header .intro-text {
-    padding-top: 100px;
+    padding-top: 10px;
     padding-bottom: 50px;
 }
 
 header .intro-text .intro-lead-in {
     margin-bottom: 25px;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 22px;
+    font-size: 75px !important;
     line-height: 22px;
+    font-weight: bolder !important;
 }
 
 header .intro-text .intro-heading {
@@ -330,7 +331,7 @@ header .intro-text .intro-heading {
     }
 
     header .intro-heading {
-        opacity: .7;
+        opacity: .8;
     }
 }
 
@@ -362,6 +363,19 @@ section h3.section-subheading {
 .service-heading {
     margin: 15px 0;
     text-transform: none;
+}
+
+#portfolio {
+    text-align: center;
+    color: black;
+    background-attachment: scroll;
+    background-image: url("/assets/potentialbackgroundone.jpg");
+    background-position: center center;
+    background-repeat: none;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
 }
 
 #portfolio .portfolio-item {
@@ -445,9 +459,10 @@ section h3.section-subheading {
     position: relative;
     padding: 0;
     list-style: none;
+    overflow: scroll !important;
 }
 
-.timeline:before {
+/*.timeline:before {
     content: "";
     position: absolute;
     top: 0;
@@ -457,7 +472,7 @@ section h3.section-subheading {
     margin-left: -1.5px;
     background-color: #f1f1f1;
 }
-
+*/
 .timeline>li {
     position: relative;
     margin-bottom: 50px;
@@ -639,6 +654,19 @@ section h3.section-subheading {
     .timeline>li.timeline-inverted>.timeline-panel {
         padding: 0 100px 20px 20px;
     }
+}
+
+#team {
+    text-align: center;
+    color: black;
+    background-attachment: scroll;
+    background-image: url("/assets/2.jpg");
+    background-position: center center;
+    background-repeat: none;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
 }
 
 .team-member {
