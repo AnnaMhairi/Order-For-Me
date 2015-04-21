@@ -7,11 +7,12 @@
 body {
     overflow-x: hidden;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 700;
+    font-weight: 100;
 }
 
 .text-muted {
     color: black;
+    text-align: right;
 }
 
 .text-primary {
@@ -37,6 +38,7 @@ a.active {
 
 a {
     color: grey;
+    text-align: right;
 }
 
 a:hover,
@@ -378,7 +380,7 @@ section h2.section-heading-mid-div {
     font-size: 40px !important;
     /*font-weight: bolder !important;*/
     color: grey !important;
-    text-align: right !important;
+    text-align: center !important;
     font-family: 'Roboto', sans-serif;
     font-weight: 100px;
 }
