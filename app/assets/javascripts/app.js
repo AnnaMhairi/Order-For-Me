@@ -17,6 +17,7 @@ $(document).on('page:change',function() {
         $('.service-heading').append('<li><a class="clarified_restaurant" data-id="'+key+'" href="/welcome/'+key+'">'+data.x[key]+'</a></li>')
       }
     })
+
   });
 
   $('body').on('click', '.clarified_restaurant', function(event){
@@ -62,4 +63,6 @@ $(document).on('page:change',function() {
     })
   })
 });
+
+
 
