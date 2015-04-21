@@ -574,13 +574,18 @@ section h3.section-subheading {
 #services .service-heading {
 margin: 0 0 30px;
 }
+.comments{
+  max-height: 650px;
+  overflow: scroll;
 
-.timeline {
+}
+
+/*.timeline {
     position: relative;
     padding: 0;
     list-style: none;
     overflow: scroll !important;
-}
+}*/
 
 /*.timeline:before {
     content: "";
@@ -593,7 +598,7 @@ margin: 0 0 30px;
     background-color: #f1f1f1;
 }
 */
-.timeline>li {
+/*.timeline>li {
     position: relative;
     margin-bottom: 50px;
     min-height: 50px;
@@ -672,10 +677,10 @@ margin: 0 0 30px;
 }
 
 .timeline>li:last-child {
-    margin-bottom: 0;
-}
+    margin-bottom: 0;*/
+/*}*/
 
-.timeline .timeline-heading h4 {
+/*.timeline .timeline-heading h4 {
     margin-top: 0;
     color: inherit;
 }
@@ -774,7 +779,7 @@ margin: 0 0 30px;
     .timeline>li.timeline-inverted>.timeline-panel {
         padding: 0 100px 20px 20px;
     }
-}
+}*/
 
 #team {
     text-align: center;
