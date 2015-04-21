@@ -6,7 +6,8 @@
 
 body {
     overflow-x: hidden;
-    font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
 }
 
 .text-muted {
@@ -247,6 +248,7 @@ fieldset[disabled] .btn-xl.active {
 
 @media(min-width:768px) {
     .navbar-default {
+        width: default;
         padding: 25px 0;
         border: 0;
         background-color: transparent;
@@ -296,9 +298,11 @@ header .intro-text {
 
 header .intro-text .intro-lead-in {
     margin-bottom: 25px;
-    font-family: 'Roboto', sans-serif;
     font-weight: 100px;
-    font-size: 50px !important;
+    margin-bottom: 25px;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 45px !important;
+    font-weight: bolder !important;
     line-height: 22px;
     text-shadow: .5px .5px white;
     /*font-weight: bolder !important;*/
@@ -315,6 +319,7 @@ header .intro-text .intro-heading {
 }
 
 @media(min-width:768px) {
+
     header .intro-text {
         padding-top: 300px;
         padding-bottom: 200px;
