@@ -15,6 +15,4 @@
 //= require turbolinks
 //= require bootstrap
 //= require bootstrap.min
-//= require pgwslideshow
-//= require pgwslideshow.min
 //= require_tree .

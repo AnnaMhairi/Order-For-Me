@@ -13,9 +13,5 @@
  *= require_self
  *= require agency
  *= require bootstrap.min
- *= require pgwslideshow
- *= require pgwslideshow.min
- *= require pgwslideshow_light.min
- *= require pgwslideshow_light
  *= require_tree .
  */

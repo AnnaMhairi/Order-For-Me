@@ -45,10 +45,15 @@ $(document).on('page:change',function() {
       }
       //append reviews to div and set default as hidden
       for (var i=0; i < 15; i++){
-        $('.pgwSlideshow').append('<li><img src="'+data.photo_array[i]+'"></li>')
+        $('.autoplay').append('<li><img src="'+data.photo_array[i]+'"></li>')
       }
-      var pgwSlideshow = $('.pgwSlideshow').pgwSlideshow()
-        pgwSlideshow.startSlide()
+
+      $('.autoplay').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+      });
 
     })
 
