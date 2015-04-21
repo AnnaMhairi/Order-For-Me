@@ -1,7 +1,7 @@
 require 'APICall'
 require 'nokogiri'
 require 'open-uri'
-require 'geocoder'
+# require 'geocoder'
 
 class WelcomeController < ApplicationController
 
@@ -14,7 +14,9 @@ class WelcomeController < ApplicationController
     api_search = foursquare_search(params[:restaurant], params[:citystate])
     @restaurant_search_results = get_names(api_search)
 
-    render :json => {restaurant_search_results: @restaurant_search_results, api_search_results: api_search}
+    @x = Geocoder.search("San Francisco, CA")
+
+    render :json => {restaurant_search_results: @restaurant_search_results, api_search_results: api_search, x: @x }
   end
 
   def obtain_restaurants_with_menus(result_of_restaurant_search) #determines whether a restaurant id is able to return a menu object
