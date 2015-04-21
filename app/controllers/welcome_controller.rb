@@ -1,6 +1,7 @@
 require 'APICall'
 require 'nokogiri'
 require 'open-uri'
+require 'geocoder'
 
 class WelcomeController < ApplicationController
 
