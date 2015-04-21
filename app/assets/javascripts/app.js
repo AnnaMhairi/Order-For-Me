@@ -44,7 +44,7 @@ $(document).on('page:change',function() {
         }
       }
       //append reviews to div and set default as hidden
-      for (var i=0; i < 15; i++){
+      for (var i=0; i < 25; i++){
         $('.autoplay').append('<li><img src="'+data.photo_array[i]+'"></li>')
       }
 
