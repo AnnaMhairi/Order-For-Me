@@ -17,6 +17,7 @@ class WelcomeController < ApplicationController
   end
 
   def obtain_restaurants_with_menus(result_of_restaurant_search) #determines whether a restaurant id is able to return a menu object
+    @foursquarevenue = FourSquare.new
     restaurants_with_menus = {}
     result_of_restaurant_search.each do |id, name|
       restaurants_with_menus[id]
@@ -54,9 +55,20 @@ class WelcomeController < ApplicationController
     @url = @foursquareapi.venue_url(params[:id])
 
     if @menu["response"]["menu"]["menus"]["count"] == 0
-      @suggestions = @foursquareapi.similar_venues(params[:id])
-      # @suggestions["response"]["similarVenues"]["items"]
-      render :json => {suggestions: @suggestions, isSuggestion: true}
+
+      @suggestion_objects = @foursquareapi.similar_venues(params[:id])
+      @suggestions = {}
+      @suggestion_objects["response"]["similarVenues"]["items"].each do |venue|
+        @suggestions[venue["id"]] = venue["name"]
+      end
+
+      @suggestions_with_menu = obtain_restaurants_with_menus(@suggestions)
+
+      p"*"*99
+      p @suggestions_with_menu
+      p"*"*99
+
+      render :json => {suggestions: @suggestions_with_menu, isSuggestion: true}
     else
       # GET ALL REVIEW TEXT
       @reviews = obtain_reviews_and_put_in_array(@tips)
