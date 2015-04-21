@@ -516,7 +516,20 @@ section h3.section-subheading {
     width:60%;
     /*height:60%;*/
 }
-
+.dishrow{
+    margin: 0 auto;
+    padding: 25px;
+    max-width: 100%;
+    text-align: center;
+    /*float:right;*/
+    background-color: #fff;
+    opacity: .8;
+    border-radius: 20%;
+    /*display:inline-block;*/
+    /*right:1000px;*/
+    width:60%;
+    /*height:60%;*/
+}
 .portfolio-caption{
     margin: 0 auto;
 /*    position: relative;
@@ -1017,6 +1030,10 @@ body {
 
 ul li{
     list-style-type: none;
+    margin: 0 0 25px 0;
+    text-align:center;
+    line-height:30px;
+    font-size: 15px;
 }
 a ul li{
     color:black;
