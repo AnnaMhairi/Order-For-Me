@@ -326,7 +326,7 @@ header .intro-text .intro-heading {
 @media(min-width:768px) {
 
     header .intro-text {
-        padding-top: 300px;
+        padding-top: 200px;
         padding-bottom: 200px;
     }
 
@@ -432,8 +432,16 @@ section h3.section-subheading {
 .service-heading {
     margin: 15px 0;
     text-transform: none;
-}
+    list-style-type: none;
 
+}
+.service-heading li {
+    margin: 15px 0;
+    text-transform: none;
+    list-style-type: none;
+     color:black;
+
+}
 #portfolio {
     text-align: center;
     color: black;
@@ -499,7 +507,7 @@ section h3.section-subheading {
     padding: 25px;
     max-width: 100%;
     text-align: center;
-    float:right;
+    /*float:right;*/
     background-color: #fff;
     opacity: .8;
     border-radius: 20%;
@@ -542,10 +550,16 @@ section h3.section-subheading {
     z-index: 2;
 }
 
-@media(min-width:767px) {
+@media(min-width:768px) {
     #portfolio .portfolio-item {
         margin: 0 0 30px;
     }
+}
+
+
+@media(min-width: 768px){
+#services .service-heading {
+margin: 0 0 30px;
 }
 
 .timeline {
@@ -999,4 +1013,20 @@ img::-moz-selection {
 
 body {
     webkit-tap-highlight-color: grey;
+}
+
+ul li{
+    list-style-type: none;
+}
+a ul li{
+    color:black;
+}
+section #section .row{
+    color:black;
+}
+li a .clarified_resstaurant{
+    color:black;
+}
+a{
+    color:black;
 }
