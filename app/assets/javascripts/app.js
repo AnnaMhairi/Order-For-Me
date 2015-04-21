@@ -25,27 +25,36 @@ $(document).on('page:change',function() {
     })
 
     request.done(function(data) {
-      // console.log(data.menu)
-      var array = []
-      var vals = []
-      for (var key in data.review_list_per_item) {
-        array.push(key)
-        vals.push(data.review_list_per_item[key])
+      if (data.isSuggestion === true) {
+        console.log(data.suggestions)
       }
+      else if (data.isSuggestion === false) {
+        var array = []
+        var vals = []
+        for (var key in data.review_list_per_item) {
+          array.push(key)
+          vals.push(data.review_list_per_item[key])
+        }
 
-      for (var i=0; i < 5; i++) {
-        $('.mid-section').append('<li><a href="">'+array[i]+'</a></li>')
-        $('.container').append('<p>'+array[i]+'</p><ul class="list comment_'+i+'"></ul>')
-        for(var idx=0; idx<vals[i].length; idx++){
-          $('.comment_'+i).append('<li>'+vals[i][idx]+'</li>')
+        for (var i=0; i < 5; i++) {
+          $('.mid-section').append('<li><a href="">'+array[i]+'</a></li>')
+          $('.container').append('<p>'+array[i]+'</p><ul class="list comment_'+i+'"></ul>')
+          for(var idx=0; idx<vals[i].length; idx++){
+            $('.comment_'+i).append('<li>'+vals[i][idx]+'</li>')
 
+          }
         }
       }
-      //append reviews to div and set default as hidden
+        //append reviews to div and set default as hidden
     })
 
     request.fail(function(data) {
-      alert("Sorry, This Restaurant Does Not Have A Menu Online")
+      // alert("Sorry, This Restaurant Does Not Have A Menu Online")
+      // console.log(data)
+      // var request = $.ajax({
+      //   url: '/suggestion',
+      //   type: 'GET',
+      // })
     })
   })
 });

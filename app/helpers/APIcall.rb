@@ -21,6 +21,10 @@ class FourSquare
     self.class.get("/venues/#{venue_id}", @options)
   end
 
+  def similar_venues(venue_id)
+    self.class.get("/venues/#{(venue_id)}/similar", @options)
+  end
+
   def venue_menu(venue_id)
     self.class.get("/venues/#{venue_id}/menu", @options)
   end

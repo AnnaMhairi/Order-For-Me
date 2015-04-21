@@ -12,12 +12,11 @@ class WelcomeController < ApplicationController
     @foursquarevenue = FourSquare.new
     api_search = foursquare_search(params[:restaurant], params[:citystate])
     @restaurant_search_results = get_names(api_search)
-    # @restaurants_with_menus = obtain_restaurants_with_menus(@restaurant_search_results)
 
-    render :json => {restaurant_search_results: @restaurant_search_results, api_search_results: api_search, venue_objects: @restaurants_with_menus}
+    render :json => {restaurant_search_results: @restaurant_search_results, api_search_results: api_search}
   end
 
-  def obtain_restaurants_with_menus(result_of_restaurant_search)
+  def obtain_restaurants_with_menus(result_of_restaurant_search) #determines whether a restaurant id is able to return a menu object
     restaurants_with_menus = {}
     result_of_restaurant_search.each do |id, name|
       restaurants_with_menus[id]
@@ -54,25 +53,33 @@ class WelcomeController < ApplicationController
     @menu = @foursquareapi.venue_menu(params[:id])
     @url = @foursquareapi.venue_url(params[:id])
 
-    # GET ALL REVIEW TEXT
-    @reviews = obtain_reviews_and_put_in_array(@tips)
+    if @menu["response"]["menu"]["menus"]["count"] == 0
+      @suggestions = @foursquareapi.similar_venues(params[:id])
+      # @suggestions["response"]["similarVenues"]["items"]
+      render :json => {suggestions: @suggestions, isSuggestion: true}
+    else
+      # GET ALL REVIEW TEXT
+      @reviews = obtain_reviews_and_put_in_array(@tips)
 
-    # GET ALL MENU ITEM TEXT
-    @dishnames = obtain_dish_names_and_put_in_array(@menu)
+      # GET ALL MENU ITEM TEXT
+      @dishnames = obtain_dish_names_and_put_in_array(@menu)
 
-    # GET ALL KEYWORD TEXT USING NOKOGIRI
-    @venue_url = @url["response"]["venue"]["canonicalUrl"]
-    doc = Nokogiri::HTML(open(@venue_url))
-    @tags = doc.xpath("//div[contains(@class,'tastes')]/ul/li[contains(@class,'taste')]/span[contains(@class,'pill')]").collect {|node| node.text.strip}
+      # GET ALL KEYWORD TEXT USING NOKOGIRI
+      @venue_url = @url["response"]["venue"]["canonicalUrl"]
+      doc = Nokogiri::HTML(open(@venue_url))
+      @tags = doc.xpath("//div[contains(@class,'tastes')]/ul/li[contains(@class,'taste')]/span[contains(@class,'pill')]").collect {|node| node.text.strip}
 
-    #HASH WITH KEY TAG AND VALUE MENU ITEM ARRAY
-    @menu_item_to_tag = menu_tag_association(@dishnames, @tags)
-    #HASH WITH KEY TAG WORD AND VALUE ARRAY OF REVIEWS MENTIONING TAG WORD
-    @tag_to_reviews = tag_review_association(@tags, @reviews)
-    #HASH WITH MENU ITEM AS KEY AND ARRAY OF REVIEWS FOR THAT MENU ITEM AS THE VALUES
-    @menu_with_reviews = menu_to_review_association(@tag_to_reviews, @menu_item_to_tag)
+      #HASH WITH KEY TAG AND VALUE MENU ITEM ARRAY
+      @menu_item_to_tag = menu_tag_association(@dishnames, @tags)
+      #HASH WITH KEY TAG WORD AND VALUE ARRAY OF REVIEWS MENTIONING TAG WORD
+      @tag_to_reviews = tag_review_association(@tags, @reviews)
+      #HASH WITH MENU ITEM AS KEY AND ARRAY OF REVIEWS FOR THAT MENU ITEM AS THE VALUES
+      @menu_with_reviews = menu_to_review_association(@tag_to_reviews, @menu_item_to_tag)
+      render :json => {review_list_per_item: @menu_with_reviews, isSuggestion: false}
+    end
 
-    render :json => {review_list_per_item: @menu_with_reviews, menu: @menu}
+
+
   end
 
   private
