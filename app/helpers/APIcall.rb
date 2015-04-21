@@ -37,6 +37,10 @@ class FourSquare
   def venue_url(venue_id)
     self.class.get("/venues/#{venue_id}", @options)
   end
+
+  def trending_restaurants(latitude_longtitude)
+    self.class.get("/venues/trending", @options)
+  end
 end
 
   def get_restaurant_names(venue,place)
