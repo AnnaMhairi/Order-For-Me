@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'yelp'
+
 gem 'geocoder'
 
 gem 'similar_text'
