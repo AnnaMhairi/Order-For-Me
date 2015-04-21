@@ -276,7 +276,7 @@ fieldset[disabled] .btn-xl.active {
 header {
     text-align: center;
     color: black;
-    background-attachment: scroll;
+    background-attachment: fixed;
     background-image: url("/assets/3.jpg");
     background-position: center center;
     background-repeat: none;
@@ -294,9 +294,10 @@ header .intro-text {
 header .intro-text .intro-lead-in {
     margin-bottom: 25px;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 75px !important;
+    font-size: 50px !important;
     line-height: 22px;
-    font-weight: bolder !important;
+    text-shadow: .5px .5px white;
+    /*font-weight: bolder !important;*/
 }
 
 header .intro-text .intro-heading {
@@ -346,6 +347,10 @@ section h2.section-heading {
     font-weight: bolder !important;
     color: white !important;
     text-align: right !important;
+    position: absolute;
+    top: -128px;
+    right: -131px;
+    text-shadow: 3px 3px #000000;
 }
 
 section h2.section-heading-mid-div {
@@ -364,6 +369,12 @@ section h3.section-subheading {
     font-size: 15px;
     text-align: right;
     color: white;
+    word-wrap: break-word;
+    width: 30%;
+    position: absolute;
+    left: 900px;
+    top: -138px;
+    line-height: 22px;
     /*font-style: italic;*/
     /*font-weight: 400;*/
 }
@@ -382,7 +393,7 @@ section h3.section-subheading {
 #portfolio {
     text-align: center;
     color: black;
-    background-attachment: scroll;
+    background-attachment: fixed;
     background-image: url("/assets/potentialbackgroundone.jpg");
     background-position: center center;
     background-repeat: none;
@@ -442,10 +453,14 @@ section h3.section-subheading {
 #portfolio .portfolio-item .portfolio-caption {
     margin: 0 auto;
     padding: 25px;
-    max-width: 400px;
+    max-width: 200px;
     text-align: center;
     background-color: #fff;
-    opacity: .7;
+    opacity: .8;
+    border-radius: 20%;
+    position: absolute;
+    top: -135px;
+    left: 1019px;
 }
 
 #portfolio .portfolio-item .portfolio-caption h4 {
@@ -674,7 +689,7 @@ section h3.section-subheading {
 #team {
     text-align: center;
     color: black;
-    background-attachment: scroll;
+    background-attachment: fixed;
     background-image: url("/assets/2.jpg");
     background-position: center center;
     background-repeat: none;
