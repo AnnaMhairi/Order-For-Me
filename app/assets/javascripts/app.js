@@ -44,6 +44,12 @@ $(document).on('page:change',function() {
         }
       }
       //append reviews to div and set default as hidden
+      for (var i=0; i < 15; i++){
+        $('.pgwSlideshow').append('<li><img src="'+data.photo_array[i]+'"></li>')
+      }
+      var pgwSlideshow = $('.pgwSlideshow').pgwSlideshow()
+        pgwSlideshow.startSlide()
+
     })
 
     request.fail(function(data) {

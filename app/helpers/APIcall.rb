@@ -12,6 +12,10 @@ class FourSquare
     @options = { query: {client_id: ENV['client_id'], client_secret: ENV['client_secret'], v:20150403} }
   end
 
+  def venue_photos(venue_id)
+    self.class.get("/venues/#{venue_id}/photos", @options)
+  end
+
   def venue_tips(venue_id, options)
     new_options = {query: @options[:query].merge(options)}
     self.class.get("/venues/#{venue_id}/tips", new_options)
