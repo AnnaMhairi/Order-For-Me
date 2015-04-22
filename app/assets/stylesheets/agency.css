@@ -41,6 +41,14 @@ a {
     text-align: right;
 }
 
+
+a.clarified_resstaurant {
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    font-size: 16px !important;
+}
+
+
 a:hover,
 a:focus,
 a:active,

@@ -20,7 +20,7 @@ $(document).on('page:change',function() {
       console.log(data.x)
       console.log(data.z)
       for(var key in data.restaurant_search_results) {
-        $('.results ol.result_restaurants').append('<li><a class="clarified_restaurant" data-id="'+key+'" href="/welcome/'+key+'">'+data.restaurant_search_results[key]+'</a></li>')
+        $('.row ol.result_restaurants').append('<li><a class="clarified_restaurant" data-id="'+key+'" href="/welcome/'+key+'">'+data.restaurant_search_results[key]+'</a></li>')
 
       // for(var key in data.x) {
         // $('.service-heading').append('<li><a class="clarified_restaurant" data-id="'+key+'" href="/welcome/'+key+'">'+data.x[key]+'</a></li>')
@@ -43,9 +43,9 @@ $(document).on('page:change',function() {
       if (data.isSuggestion === true) {
         // console.log(data.suggestions)
         $('.result_restaurants').hide()
-        $('.suggestions').show()
+        $('.service-heading').show()
         for(var key in data.suggestions) {
-          $('.results ol.suggested_restaurants').append('<li><a class="clarified_restaurant" data-id"'+key+'" href="/welcome/'+key+'">'+data.suggestions[key]+'</a></li>')
+          $('.row ol.suggested_restaurants').append('<li><a class="clarified_restaurant" data-id"'+key+'" href="/welcome/'+key+'">'+data.suggestions[key]+'</a></li>')
         }
       }
       else if (data.isSuggestion === false) {
@@ -58,8 +58,8 @@ $(document).on('page:change',function() {
 
 
         for (var i=0; i < 5; i++) {
-          $('.mid-section').append('<li><a data-id="'+i+'"class="restaurant_given" href="">'+array[i]+'</a></li>')
-          $('.container').append('<p class="list" style="display:none">'+array[i]+'</p><ul class="list comment_'+i+'" style="display:none"></ul>')
+          $('div.portfolio-caption').append('<li><a data-id="'+i+'"class="restaurant_given" href="">'+array[i]+'</a></li>')
+          $('.mid-section').append('<p class="list" style="display:none">'+array[i]+'</p><ul class="list comment_'+i+'" style="display:none"></ul>')
           for(var idx=0; idx<vals[i].length; idx++){
             $('.comment_'+i).append('<li>'+vals[i][idx]+'</li>')
 
