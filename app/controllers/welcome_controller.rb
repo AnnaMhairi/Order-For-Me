@@ -62,11 +62,33 @@ class WelcomeController < ApplicationController
     return dishnames
   end
 
+  def photo_reel(photos)
+    photo_array = []
+
+    photos["response"]["photos"]["items"].each do |photo|
+      photo_array << "#{photo["prefix"]}300x300#{photo["suffix"]}"
+    end
+    return photo_array
+  end
+
   def show
     @foursquareapi = FourSquare.new
     @tips = @foursquareapi.venue_tips(params[:id], {sort: 'popular', limit: 200})
     @menu = @foursquareapi.venue_menu(params[:id])
     @url = @foursquareapi.venue_url(params[:id])
+   #COPY THIS LINE AND ALL ASSOCIATED PHOTO METHODS
+    @photos = @foursquareapi.venue_photos(params[:id])
+
+    #GET ALL PHOTOS
+    # prefix + size + suffix
+    # https://irs0.4sqi.net/img/general/300x500/2341723_vt1Kr-SfmRmdge-M7b4KNgX2_PHElyVbYL65pMnxEQw.jpg.
+    # @photo_array = []
+
+    # @photos["response"]["photos"]["items"].each do |photo|
+    #   @photo_array << "#{photo["prefix"]}300x300#{photo["suffix"]}"
+    # end
+    @photo_array = photo_reel(@photos)
+
 
     if @menu["response"]["menu"]["menus"]["count"] == 0
 
@@ -78,10 +100,6 @@ class WelcomeController < ApplicationController
 
       @suggestions_with_menu = obtain_restaurants_with_menus(@suggestions)
 
-      p"*"*99
-      p @suggestions_with_menu
-      p"*"*99
-
       render :json => {suggestions: @suggestions_with_menu, isSuggestion: true}
     else
       # GET ALL REVIEW TEXT
@@ -91,6 +109,10 @@ class WelcomeController < ApplicationController
       @dishnames = obtain_dish_names_and_put_in_array(@menu)
 
       # GET ALL KEYWORD TEXT USING NOKOGIRI
+    #GET VENUE NAME
+    # @name = @url["response"]["venue"]["name"]
+
+    # GET ALL KEYWORD TEXT USING NOKOGIRI
       @venue_url = @url["response"]["venue"]["canonicalUrl"]
       doc = Nokogiri::HTML(open(@venue_url))
       @tags = doc.xpath("//div[contains(@class,'tastes')]/ul/li[contains(@class,'taste')]/span[contains(@class,'pill')]").collect {|node| node.text.strip}
@@ -101,11 +123,8 @@ class WelcomeController < ApplicationController
       @tag_to_reviews = tag_review_association(@tags, @reviews)
       #HASH WITH MENU ITEM AS KEY AND ARRAY OF REVIEWS FOR THAT MENU ITEM AS THE VALUES
       @menu_with_reviews = menu_to_review_association(@tag_to_reviews, @menu_item_to_tag)
-      render :json => {review_list_per_item: @menu_with_reviews, isSuggestion: false}
+      render :json => {review_list_per_item: @menu_with_reviews, isSuggestion: false, photo_array: @photo_array }
     end
-
-
-
   end
 
   private
