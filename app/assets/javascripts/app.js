@@ -8,7 +8,7 @@ $(document).on('page:change',function() {
     event.preventDefault();
     // var data = {restaurant: $('input.restaurant').val(), citystate: $('input.location').val() }
     $('html, body').animate({
-    scrollTop: $("#services").offset().top
+    scrollTop: $("#portfolio").offset().top
     }, 1000);
     // console.log(data)
     var request = $.ajax({

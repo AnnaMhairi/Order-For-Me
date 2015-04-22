@@ -37,6 +37,36 @@ body {
     opacity: .5;
 }
 
+.top-dish-title-text {
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    /*font-weight: 700;*/
+    font-size: 6em !important;
+    text-shadow: 1px 1px black !important;
+    /*letter-spacing: 0.250em;*/
+    font-weight: bolder !important;
+    margin-top: 1% !important;
+    /*margin-bottom: 15% !important;*/
+    /*margin-left: 15% !important;*/
+    /*margin-right: 15% !important;*/
+    padding: 1% !important;
+    text-align: center !important;
+    color: white;
+    background-color: black;
+    opacity: .6;
+    /*font-size: 45px !important;*/
+    /*font-weight: bolder !important;*/
+    line-height: 40px;
+    /*text-shadow: .5px .5px white;*/
+    letter-spacing: 0.250em;
+}
+
+.top-dish-description {
+    text-align: center;
+
+
+}
+
+
 p {
     font-size: 14px;
     line-height: 1.75;
@@ -267,7 +297,7 @@ fieldset[disabled] .btn-xl.active {
 .navbar-default .nav li a:focus {
     outline: 0;
     color: grey;
-    padding-top: 10% !important;
+    /*padding-top: 10% !important;*/
 }
 
 .navbar-default .navbar-nav>.active>a {
