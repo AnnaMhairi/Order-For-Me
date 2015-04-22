@@ -7,9 +7,9 @@ $(document).on('page:change',function() {
   $('.restaurant_search').on('submit', function(event){
     event.preventDefault();
     // var data = {restaurant: $('input.restaurant').val(), citystate: $('input.location').val() }
-    $('html, body').animate({
-    scrollTop: $("#portfolio").offset().top
-    }, 1000);
+    // $('html, body').animate({
+    // scrollTop: $("#portfolio").offset().top
+    // }, 1000);
     // console.log(data)
     var request = $.ajax({
       url: '/welcome',
