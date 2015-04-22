@@ -51,13 +51,13 @@ body {
     padding: 1% !important;
     text-align: center !important;
     color: white;
-    background-color: black;
-    opacity: .6;
+    /*background-color: black;*/
+    /*opacity: .6;*/
     /*font-size: 45px !important;*/
     /*font-weight: bolder !important;*/
     line-height: 40px;
     /*text-shadow: .5px .5px white;*/
-    letter-spacing: 0.250em;
+    /*letter-spacing: 0.250em;*/
 }
 
 .top-dish-description {
@@ -424,12 +424,12 @@ section h2.section-heading {
     margin-top: 0;
     margin-bottom: 15px;
     margin-right: 5px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 100px;
-    font-size: 40px !important;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    font-size: 3em !important;
     font-weight: bolder !important;
     color: white !important;
-    text-align: right !important;
+    text-align: center !important;
     /*position: absolute;*/
     /*top: -128px;*/
     /*right: -131px;*/
@@ -509,7 +509,7 @@ section h3.section-subheading {
     text-align: center;
     color: black;
     background-attachment: fixed;
-    background-image: url("/assets/potentialbackgroundone.jpg");
+    background-image: url("/assets/2.jpg");
     background-position: center center;
     background-repeat: none;
     -webkit-background-size: cover;
@@ -573,7 +573,7 @@ section h3.section-subheading {
     /*float:right;*/
     background-color: #fff;
     opacity: .8;
-    border-radius: 20%;
+    /*border-radius: 20%;*/
     /*display:inline-block;*/
     /*right:1000px;*/
     width:60%;
@@ -848,7 +848,7 @@ margin: 0 0 30px;
     text-align: center;
     color: black;
     background-attachment: fixed;
-    background-image: url("/assets/2.jpg");
+    background-image: url("/assets/6.jpg");
     background-position: center center;
     background-repeat: none;
     -webkit-background-size: cover;
