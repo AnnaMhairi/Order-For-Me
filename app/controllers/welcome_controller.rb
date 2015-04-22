@@ -14,21 +14,32 @@ class WelcomeController < ApplicationController
     render :json => {x: @x}
   end
 
+  def photo_reel(photos)
+    photo_array = []
+
+    photos["response"]["photos"]["items"].each do |photo|
+      photo_array << "#{photo["prefix"]}300x300#{photo["suffix"]}"
+    end
+    return photo_array
+  end
+
   def show
     @foursquareapi = FourSquare.new
     @tips = @foursquareapi.venue_tips(params[:id], {sort: 'popular', limit: 200})
     @menu = @foursquareapi.venue_menu(params[:id])
     @url = @foursquareapi.venue_url(params[:id])
+   #COPY THIS LINE AND ALL ASSOCIATED PHOTO METHODS
     @photos = @foursquareapi.venue_photos(params[:id])
 
     #GET ALL PHOTOS
     # prefix + size + suffix
     # https://irs0.4sqi.net/img/general/300x500/2341723_vt1Kr-SfmRmdge-M7b4KNgX2_PHElyVbYL65pMnxEQw.jpg.
-    @photo_array = []
+    # @photo_array = []
 
-    @photos["response"]["photos"]["items"].each do |photo|
-      @photo_array << "#{photo["prefix"]}300x300#{photo["suffix"]}"
-    end
+    # @photos["response"]["photos"]["items"].each do |photo|
+    #   @photo_array << "#{photo["prefix"]}300x300#{photo["suffix"]}"
+    # end
+    @photo_array = photo_reel(@photos)
 
 
     @dishnames = []
