@@ -1072,16 +1072,70 @@ ul li{
     text-align:center;
     line-height:30px;
     font-size: 15px;
+    list-style-type: none;
 }
 a ul li{
     color:black;
+    list-style-type: none;
 }
 section #section .row{
     color:black;
 }
-li a .clarified_resstaurant{
+ol a.clarified_resstaurant{
     color:black;
+    font-size: 36px;
 }
+
 a{
     color:black;
+
+}
+a ol li{
+   font-size: 36px;
+   color:black;
+}
+
+.result_restaurants{
+    list-style-type: none;
+}
+.restaurant{
+  width: 45%;
+  height: 70px;
+  font-size:20px;
+
+}
+.location{
+    width: 25%;
+  height: 70px;
+  font-size:20px;
+
+}
+.section-heading-2{
+    margin-top: 0px;
+    margin-bottom: 15px;
+    margin-right: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100px;
+    font-size: 40px !important;
+    font-weight: bolder !important;
+    color: black !important;
+    text-align: right !important;
+    text-shadow: 1px 1px #000000;
+}
+#services{
+    padding-top: 90px;
+  padding-bottom: 90px;
+}
+
+.section-heading-8{
+    margin-top: 50px;
+    margin-bottom: 15px;
+    margin-right: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100px;
+    font-size: 40px !important;
+    font-weight: bolder !important;
+    color: black !important;
+    text-align: right !important;
+    text-shadow: 1px 1px #000000;
 }
