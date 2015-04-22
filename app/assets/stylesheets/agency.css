@@ -479,13 +479,14 @@ section h3.section-subheading {
     text-align: center;
     color: black;
     background-attachment: fixed;
-    background-image: url("/assets/potentialbackgroundone.jpg");
+    background-image: url("/assets/2.jpg");
     background-position: center center;
     background-repeat: none;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+
 }
 
 #portfolio .portfolio-item {
@@ -564,11 +565,17 @@ section h3.section-subheading {
     /*height:60%;*/
 }
 .portfolio-caption{
-    margin: 0 auto;
-/*    position: relative;
-    top: -135px;
-    left: 400px;*/
+  margin: 0 auto;
+  max-width: 400px;
+  max-height: 200px;
+  color: white !important;
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 25px;
+  font-family:Montserrat;
+  font-weight: normal;
     }
+
+
 
 #portfolio .portfolio-item .portfolio-caption h4 {
     margin: 0;
@@ -576,14 +583,6 @@ section h3.section-subheading {
 }
 
 #portfolio .portfolio-item .portfolio-caption p {
-/*<<<<<<< HEAD
-    margin: 0 auto;
-    font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 16px;
-    /*font-style: italic;*/
-
-
-
     margin: 0;
     font-family: font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 16px;
@@ -607,10 +606,10 @@ section h3.section-subheading {
 #services .service-heading {
 margin: 0 0 30px;
 }
+
 .comments{
   max-height: 650px;
   overflow: scroll;
-
 }
 
 /*.timeline {
@@ -818,7 +817,7 @@ margin: 0 0 30px;
     text-align: center;
     color: black;
     background-attachment: fixed;
-    background-image: url("/assets/2.jpg");
+    /*background-image: url("/assets/2.jpg");*/
     background-position: center center;
     background-repeat: none;
     -webkit-background-size: cover;
@@ -1098,6 +1097,14 @@ a ol li{
 .result_restaurants{
     list-style-type: none;
 }
+
+a.restaurant_given{
+ color:white;
+}
+.portfolio-caption li{
+    list-style-type: none;
+}
+
 .restaurant{
   width: 45%;
   height: 70px;
@@ -1138,4 +1145,33 @@ a ol li{
     color: black !important;
     text-align: right !important;
     text-shadow: 1px 1px #000000;
+}
+
+.section-heading-9{
+    margin-top: 50px;
+    margin-bottom: 15px;
+    margin-right: 5px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    font-size: 3em !important;
+    font-weight: bolder !important;
+    color: white !important;
+    text-align: right !important;
+    text-shadow: 1px 1px #000000;
+}
+.service-heading-9{
+    font-size: 18px;
+    color:white !important;
+    text-shadow: 1px 1px #000000;
+    font-family: 'Roboto', sans-serif;
+}
+.fivedish{
+
+    margin-top: -120px;
+    background-color: black;
+    /*opacity: 0.5;*/
+    /*max-width: 800px;*/
+    color:white;
+    background: rgba(0, 0, 0, 0.3);
+
 }
