@@ -19,6 +19,24 @@ body {
     color: grey;
 }
 
+.home-title-text {
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    font-size: 2em !important;
+    text-shadow: 1px 1px black !important;
+    /*letter-spacing: 0.250em;*/
+    font-weight: bolder !important;
+    margin-top: 15% !important;
+    margin-bottom: 15% !important;
+    /*margin-left: 15% !important;*/
+    /*margin-right: 15% !important;*/
+    padding: 1% !important;
+    text-align: center !important;
+    color: white;
+    background-color: black;
+    opacity: .5;
+}
+
 p {
     font-size: 14px;
     line-height: 1.75;
@@ -195,14 +213,17 @@ fieldset[disabled] .btn-xl.active {
 .navbar-default {
     border-color: transparent;
     background-color: black !important;
+    opacity: .8;
 }
 
 .navbar-default .navbar-brand {
-    /*font-family:  Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;*/
-    font-family: 'Roboto', sans-serif;
-    font-weight: 100;
+    font-family:  Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    /*font-family: 'Roboto', sans-serif;*/
+    font-weight: 400;
     color: white !important;
-    /*letter-spacing: 0.250em;*/
+    font-size: 1em !important;
+    letter-spacing: 0.250em;
+    margin-top: 15px !important;
 }
 
 .navbar-default .navbar-brand:hover,
@@ -235,14 +256,18 @@ fieldset[disabled] .btn-xl.active {
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
+    font-weight: bolder !important;
     letter-spacing: 1px;
     color: #fff;
+    font-size: 1em !important;
+    margin-top: 15px !important;
 }
 
 .navbar-default .nav li a:hover,
 .navbar-default .nav li a:focus {
     outline: 0;
     color: grey;
+    padding-top: 10% !important;
 }
 
 .navbar-default .navbar-nav>.active>a {
@@ -260,7 +285,7 @@ fieldset[disabled] .btn-xl.active {
 @media(min-width:768px) {
     .navbar-default {
         width: default;
-        padding: 25px 0;
+        padding: 0 0 0 0 !important;
         border: 0;
         background-color: transparent;
         -webkit-transition: padding .3s;
@@ -280,7 +305,7 @@ fieldset[disabled] .btn-xl.active {
     }
 
     .navbar-default.navbar-shrink {
-        padding: 10px 0;
+        padding: 0 0;
         background-color: #222;
     }
 
