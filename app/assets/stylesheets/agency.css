@@ -1126,6 +1126,12 @@ a ol li{
 
 .result_restaurants{
     list-style-type: none;
+    font-size:25px;
+    font-family: Montserrat;
+    text-align: center !important;
+    padding-top: 15px !important;
+    text-transform: uppercase;
+
 }
 
 a.restaurant_given{
@@ -1202,6 +1208,13 @@ a.restaurant_given{
     /*opacity: 0.5;*/
     /*max-width: 800px;*/
     color:white;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.0);
 
 }
+
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+
+
+
+
