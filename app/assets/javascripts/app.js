@@ -7,7 +7,9 @@ $(document).on('page:change',function() {
   $('.restaurant_search').on('submit', function(event){
     event.preventDefault();
     // var data = {restaurant: $('input.restaurant').val(), citystate: $('input.location').val() }
-
+    $('html, body').animate({
+    scrollTop: $("#services").offset().top
+    }, 1000);
     // console.log(data)
     var request = $.ajax({
       url: '/welcome',
@@ -33,6 +35,7 @@ $(document).on('page:change',function() {
 
   $('body').on('click', '.clarified_restaurant', function(event){
     event.preventDefault();
+
     var request = $.ajax({
       url: $(this).attr('href'),
       type: 'GET',
@@ -49,6 +52,9 @@ $(document).on('page:change',function() {
         }
       }
       else if (data.isSuggestion === false) {
+        $('html, body').animate({
+        scrollTop: $("#portfolio").offset().top
+        }, 1000);
         var array = []
         var vals = []
         for (var key in data.review_list_per_item) {
@@ -99,6 +105,9 @@ $(document).on('page:change',function() {
 
   $('body').on('click', '.restaurant_given', function(event) {
     event.preventDefault();
+    $('html, body').animate({
+        scrollTop: $("#about").offset().top
+      }, 1000);
     $('.list').hide()
     $('.comment_'+$(this).data("id")).show();
   })
