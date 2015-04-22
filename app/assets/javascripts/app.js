@@ -18,7 +18,6 @@ $(document).on('page:change',function() {
       data: {restaurant: $('input.restaurant').val(), citystate: $('input.location').val() }
     })
     request.done(function(data) {
-
       console.log(data.x)
       console.log(data.z)
       for(var key in data.restaurant_search_results) {

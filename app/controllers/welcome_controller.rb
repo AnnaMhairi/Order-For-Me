@@ -1,4 +1,5 @@
 require 'APICall'
+require 'YelpCall'
 require 'nokogiri'
 require 'open-uri'
 # require 'geocoder'
@@ -14,17 +15,18 @@ class WelcomeController < ApplicationController
     api_search = foursquare_search(params[:restaurant], params[:citystate])
     @restaurant_search_results = get_names(api_search)
 
-    @x = Geocoder.search("San Francisco, CA")
+    # @x = Geocoder.search("San Francisco, CA")
     # @y = []
 
     # # p "*"*99
-    @y = @x.first.data["geometry"]["location"]
+    # @y = @x.first.data["geometry"]["location"]
     # # # p @y
     # # p "*"*99
-    @z = foursquarevenue.trending_restaurants({ll: '37.7749495,-122.4194155', limit: 50, radius: 2000})
+    # @z = foursquarevenue.trending_restaurants({ll: '37.7749495,-122.4194155', limit: 50, radius: 2000})
     # p "*"*99
     # p z
-
+    # @y = Yelpz.new
+    # @z = @y.search
 
     render :json => {restaurant_search_results: @restaurant_search_results, api_search_results: api_search,x: @y,z: @z }
 
