@@ -108,8 +108,32 @@ $(document).on('page:change',function() {
     $('html, body').animate({
         scrollTop: $("#about").offset().top
       }, 1000);
-    $('.list').hide()
-    $('.comment_'+$(this).data("id")).show();
+    $('list').hide()
+    $.modal($('.comment_'+$(this).data("id")).show(), {close: true});
   })
+
+
+// Mikes work below **********************************************
+
+
+  // $('body').on('click', '.restaurant_given', function(event){
+  //   event.preventDefault();
+  //   var dish = $(this);
+  //   $('html body').animate({
+  //     scrollTop: $("#about").offset().top
+  //   }, 750);
+  //   $('list').hide();
+  //   $('comment_'+dish.attr('data-id')).modal();
+  // })
+
+  // $('body').on('click', '.restaurant_given', function(event) {
+  //   event.preventDefault();
+  //   $('html, body').animate({
+  //       scrollTop: $("#about").offset().top
+  //     }, 1000);
+  //   $('list').hide()
+  //   $.modal("<p>"+$('.comment_'+$(this).data("id")).show()+"</p>")
+  // })
+
 });
 

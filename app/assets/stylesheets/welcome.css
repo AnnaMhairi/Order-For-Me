@@ -86,3 +86,26 @@ li {
   height: 33%;
 }*/
 
+/*.modal {
+  border: 1px solid black;
+  color: #f00;
+  display: none;
+  height: 200px;
+  padding: 49% auto;
+  text-align: center;
+  width: 200px;
+}*/
+
+/*#simplemodal-container */
+
+/*a.modalCloseImg {
+  background:url(./x.png) no-repeat; /* adjust url as required */
+/*  width:25px;
+  height:29px;
+  display:inline;
+  z-index:3200;
+  position:absolute;
+  top:-15px;
+  right:-18px;
+  cursor:pointer;
+}*/
