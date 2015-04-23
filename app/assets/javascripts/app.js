@@ -108,7 +108,19 @@ $(document).on('page:change',function() {
         scrollTop: $("#about").offset().top
       }, 1000);
     $('.list').hide()
-    $.modal($('.comment_'+$(this).data("id")).show(),{close: true});
-  })
+    $.modal( $('.comment_'+$(this).data("id")),
+              {
+                onOpen: function(dialog){
+                  dialog.overlay.fadeIn('slow', function(){
+                    dialog.data.hide();
+
+                    dialog.container.fadeIn('slow', function(){
+                      dialog.data.slideDown('slow');
+                    });
+                  });
+                }
+              }
+    );
+  });
 });
 
