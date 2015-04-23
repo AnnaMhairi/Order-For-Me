@@ -11,6 +11,7 @@ class WelcomeController < ApplicationController
   end
 
   def create
+
     foursquarevenue = FourSquare.new
     api_search = foursquare_search(params[:restaurant], params[:citystate])
     @restaurant_search_results = get_names(api_search)
@@ -27,8 +28,17 @@ class WelcomeController < ApplicationController
     # p z
     # @y = Yelpz.new
     # @z = @y.search
+    @business_names = []
+    trending = Yelpiez.new
+    @y = trending.search(params[:citystate])
+    @y.businesses.each do |business|
+      @business_names.push(business.name)
+    end
 
-    render :json => {restaurant_search_results: @restaurant_search_results, api_search_results: api_search,x: @y,z: @z }
+    p "*" * 99
+    p @z
+
+    render :json => {restaurant_search_results: @restaurant_search_results, api_search_results: api_search, x: @y, z: @business_names }
 
   end
 
