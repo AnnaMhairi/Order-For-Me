@@ -18,7 +18,7 @@ class Yelpiez
   def search(location)
     params = {sort: 2, limit: 10, category_filter: "restaurants"}
 
-    trending = @client.search("San Francisco, CA", params)
+    @client.search(location, params)
     # trending.businesses.each do |business|
     #   p "#{business.name}: #{business.rating} (#{business.url})"
     # end
