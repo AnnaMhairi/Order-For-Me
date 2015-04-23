@@ -105,9 +105,9 @@ $(document).on('page:change',function() {
 
   $('body').on('click', '.restaurant_given', function(event) {
     event.preventDefault();
-    $('html, body').animate({
-        scrollTop: $("#about").offset().top
-      }, 1000);
+    // $('html, body').animate({
+    //     scrollTop: $("#about").offset().top
+    //   }, 1000);
     $('.list').hide()
     $.modal( $('.comment_'+$(this).data("id")),
               {
