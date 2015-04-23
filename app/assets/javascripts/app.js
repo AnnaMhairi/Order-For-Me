@@ -19,7 +19,7 @@ $(document).on('page:change',function() {
     })
     request.done(function(data) {
       for (var i = 0; i < data.trending_businesses.length; i++) {
-        $('div .trending_restaurants ul').append('<li>'+data.trending_businesses[i]+'</li>')
+        $('div .trending_restaurants ul').append('<li class="trend_restaurants" data-name="'+data.trending_businesses[i]+'"><a href="#services">'+data.trending_businesses[i]+'</a></li>')
       }
       for(var key in data.restaurant_search_results) {
         $('.row ol.result_restaurants').append('<li><a class="clarified_restaurant" data-id="'+key+'" href="/welcome/'+key+'">'+data.restaurant_search_results[key]+'</a></li>')
@@ -122,6 +122,18 @@ $(document).on('page:change',function() {
                 }
               }
     );
+  });
+
+  $('body').on('click', '.trend_restaurants', function(event) {
+    event.preventDefault();
+    // debugger
+    $('.clarified_restaurant').hide()
+    var x = $(this).data("name")
+    $('html, body').animate({
+        scrollTop: $("#services").offset().top
+      }, 1000);
+    $('.restaurant_search input[name=restaurant]').val(x)
+
   });
 });
 
