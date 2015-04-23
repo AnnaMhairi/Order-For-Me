@@ -22,6 +22,7 @@ $(document).on('page:change',function() {
         $('div .trending_restaurants ul').append('<li class="trend_restaurants" data-name="'+data.trending_businesses[i]+'"><a href="#services">'+data.trending_businesses[i]+'</a></li>')
       }
       for(var key in data.restaurant_search_results) {
+        $('.row ol.result_restaurants').append('<p class ="click_restaurant">CLICK YOUR RESTAURANT BELOW.</p>')
         $('.row ol.result_restaurants').append('<li><a class="clarified_restaurant" data-id="'+key+'" href="/welcome/'+key+'">'+data.restaurant_search_results[key]+'</a></li>')
 
       // for(var key in data.x) {
