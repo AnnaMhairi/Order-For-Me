@@ -109,7 +109,7 @@ $(document).on('page:change',function() {
         scrollTop: $("#about").offset().top
       }, 1000);
     $('.list').hide()
-    $('.comment_'+$(this).data("id")).show();
+    $.modal($('.comment_'+$(this).data("id")).show(),{close: true});
   })
 });
 
