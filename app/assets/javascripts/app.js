@@ -19,6 +19,7 @@ $(document).on('page:change',function() {
     })
     request.done(function(data) {
       for (var i = 0; i < data.trending_businesses.length; i++) {
+      $('.info_restaurant').html('<p class ="click_restaurant">CLICK YOUR RESTAURANT BELOW.</p>')
         $('div .trending_restaurants ul').append('<li class="trend_restaurants" data-name="'+data.trending_businesses[i]+'"><a href="#services">'+data.trending_businesses[i]+'</a></li>')
       }
       for(var key in data.restaurant_search_results) {
