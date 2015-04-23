@@ -35,13 +35,12 @@
 
 
 <!-- Navigation -->
- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
+                    <span class="sr-only"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -56,16 +55,16 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#services">Team</a>
+                        <a class="page-scroll" href="#header">Home</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#about">About</a>
+                        <a class="page-scroll" href="#services">About</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#team">Trending Eats</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
+                        <a class="page-scroll" href="#">Team</a>
                     </li>
                 </ul>
             </div>
@@ -74,83 +73,135 @@
         <!-- /.container-fluid -->
     </nav>
 
-    <!-- Header -->
-    <header>
+    <!-- Original Header Code -->
+<!--     <header>
         <div class="container">
             <div class="intro-text">
                 <div class="intro-lead-in">FIND A RESTAURANT</div>
-                <div class="intro-heading">
+                 <div class="intro-heading">
                   <form class="restaurant_search">
                     <input class="restaurant" type="textarea" name="restaurant" placeholder="Restaurant Name">
                     <input class="location" type="textarea" name="citystate" placeholder="City, State">
                 </div>
                 <input class="submit" type="submit" value="search">
-                </form>
+                </form> -->
+    <!--         </div>
+        </div>
+    </header>
+
+<! NEW HEADER CODE -->
+    <header id="header">
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in">
+                    <h2 class="home-title-text">
+                        ORDER FOR ME                                  <i class="fa fa-cutlery"></i>
+                    </h2>
+                    <div class="intro-heading">
+                    </div>
+                </div>
             </div>
         </div>
     </header>
+
 
     <!-- Services Section -->
     <section id="services">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-
-                    <h2 class="section-heading-mid-div">Which restaurant are you looking for?</h2>
-                    <!-- <h3 class="section-subheading text-muted"></h3> -->
-
-                    <!-- <ul class="autoplay"></ul> -->
-
-                        <span class="fa-stack fa-lg">
-                        <i class="fa fa-square-o fa-stack-2x"></i>
-                        <i class="fa fa-cutlery fa-stack-1x"></i>
-                    </span>
-                    <span class="fa-stack fa-lg">
-                        <i class="fa fa-square-o fa-stack-2x"></i>
-                        <i class="fa fa-glass fa-stack-1x"></i>
-                    </span>
-                    <span class="fa-stack fa-lg">
-                        <i class="fa fa-square-o fa-stack-2x"></i>
-                        <i class="fa fa-beer fa-stack-1x"></i>
-                    </span>
-                    <span class="fa-stack fa-lg">
-                        <i class="fa fa-square-o fa-stack-2x"></i>
-                        <i class="fa fa-spoon fa-stack-1x"></i>
-                    </span>
+                    <h2 class="section-heading-2"><center>How It Works.</center></h2>
+                    <h3 class="section-subheading text-muted"></h3>
                 </div>
             </div>
             <div class="row text-center">
-                <div class="row">
-                  <ol class="result_restaurants">
-                  </ol>
-                    <h4 class="service-heading" style="display:none">Suggested Restaurants</h4>
-                    <p class="text-muted"></p>
-                    <ol class="suggested_restaurants"></ol>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-3x">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-glass fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">SEE TRENDING RESTAURANTS</h4>
+                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
                 </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-3x">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-spoon fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">VIEW POPULAR DISHES</h4>
+                    <p class="text-muted">Not sure what to order? At Order For Me we've calculated the most talked about dishes per restaurant.</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-3x">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">FIND A RESTAURANT</h4>
+                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                    <h2 class="section-heading-8"><center>TRY IT YOURSELF!</center></h2>
+            <!-- <div class="intro-heading"> -->
+                  <form class="restaurant_search">
+                    <input class="restaurant" type="textarea" name="restaurant" placeholder="Restaurant Name">
+                    <input class="location" type="textarea" name="citystate" placeholder="City, State">
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                <input class="submit" type="submit" value="search">
+                </form>
             </div>
         </div>
-    </section>
+    </div>
+    <div class="row text-center">
+        <div class="row">
+            <ol class="result_restaurants">
+            </ol>
+        <h4 class="service-heading" style="display:none">Suggested Restaurants</h4>
+            <p class="text-muted"></p>
+            <ol class="suggested_restaurants"></ol>
+        </div>
+      </div>
+  </div>
+</section>
 
-    <!-- Portfolio Grid Section -->
+    <!--Portfolio Grid Section-->
+
     <section id="portfolio" class="bg-light-gray">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Top Five Dishes</h2>
-                    <h3 class="section-subheading text-muted">Check out what people are saying about theses dishes on Foursquare!</h3>
+
+                    <!-- <div class="intro-lead-in"> -->
+                    <!-- <h2 class="top-dish-title-text">Top Five Dishes</h2> -->
+                    <!-- </div> -->
+<!--                     <h3 class="section-subheading text-muted">
+                        <h3 class="top-dish-description">
+                        Check out what people are saying about theses dishes on Foursquare!
+                        </h3>
+                    </h3> -->
+
+                    <div class = "fivedish">
+                    <h2 class="section-heading-9"><center>TOP FIVE DISHES</center></h2>
+                    <h4 class="service-heading-9">Check out what people are saying about theses dishes on Foursquare!</h4>
+
                 </div>
             </div>
+        </div>
             <div class="row">
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
+                <div class="col-lg-12 text-center">
+                    <!-- a href="#portfolioModal1" class="portfolio-link" data-toggle="modal"> -->
+                        <!-- <div class="portfolio-hover"> -->
+                   <!--          <div class="portfolio-hover-content">
                                 <i class="fa fa-plus fa-3x"></i>
                             </div>
-                        </div>
-                       <!--  <img src="#ss="img-responsive" alt=""> -->
-                    </a>
+                        </div> -->
+                        <!-- <img src="#ss="img-responsive" alt=""> -->
+                    <!-- </a> -->
                     <div class="portfolio-caption">
+
                         <h4 class="dish"></h4>
                         <p class="text-muted"></p>
                     </div>
@@ -159,13 +210,18 @@
         </div>
     </section>
 
-<!--     About Section
- -->
+   <!-- About Section -->
+
    <section id="about">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading-mid-div">Photos & Reviews</h2>
+<!--                     <div class="col-lg-12 text-center">
+                        <span class="fa-stack fa-3x">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-camera fa-stack-1x fa-inverse"></i>
+                    </span> -->
+                     <h2 class="section-heading-8"><center>RESTAURANT PHOTOS</center></h2>
+                     <h4 class="service-heading"><center>CAN'T GET ENOUGH OF THIS RESTAURANT? CHECK OUT SOME PHOTOS!</center></h4>
                     <h3 class="comments">
                       <ol class="mid-section">
                       </ol>
@@ -181,8 +237,8 @@
             </div>
         </div>
     </section>
-<!--
-    Team Section -->
+
+<!--Team Section -->
     <section id="team" class="bg-light-gray">
         <div class="container">
             <div class="row">
@@ -191,43 +247,43 @@
                     <h3 class="section-subheading text-muted"></h3>
                 </div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-sm-4">
-                    <div class="team-member">
-                        <!-- <img src="#" class="img-responsive img-circle" alt=""> -->
+                    <div class="team-member"> -->
+                        <!-- <img src="#" class="img-responsive img-circle" alt="">
                         <h4></h4>
                         <p class="text-muted"></p>
                         <ul class="list-inline social-buttons">
-                            <!-- <li><a href="#"><i class="fa fa-twitter"></i></a>
+                            <! <li><a href="#"><i class="fa fa-twitter"></i></a>
                             <! </li> -->
                             <!-- <li><a href="#"><i class="fa fa-facebook"></i></a> -->
                             <!-- </li> -->
                             <!-- <li><a href="#"><i class="fa fa-linkedin"></i></a> -->
                             <!-- </li> -->
-                        </ul>
+                       <!--  </ul>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="team-member">
-                        <!-- <img src="#" class="img-responsive img-circle" alt=""> -->
-                        <h4></h4>
+                        <! <img src="#" class="img-responsive img-circle" alt=""> -->
+                       <!--  <h4></h4>
                         <p class="text-muted"></p>
                         <ul class="list-inline social-buttons">
-                            <!-- <li><a href="#"><i class="fa fa-twitter"></i></a> -->
+                            <! <li><a href="#"><i class="fa fa-twitter"></i></a> -->
                             <!-- </li> -->
                             <!-- <li><a href="#"><i class="fa fa-facebook"></i></a> -->
                             <!-- </li> -->
                             <!-- <li><a href="#"><i class="fa fa-linkedin"></i></a> -->
                             <!-- </li> -->
-                        </ul>
-                    </div>
+                        <!-- </ul> -->
+                   <!--  </div>
                 </div>
                 <div class="col-sm-4">
-                    <div class="team-member">
+                    <div class="team-member"> -->
                         <!-- <img src="#" class="img-responsive img-circle" alt=""> -->
-                        <h4></h4>
+                       <!--  <h4></h4>
                         <p class="text-muted"></p>
-                        <ul class="list-inline social-buttons">
+                        <ul class="list-inline social-buttons"> -->
                             <!-- <li><a href="#"><i class="fa fa-twitter"></i></a> -->
                             <!-- </li> -->
                             <!-- <li><a href="#"><i class="fa fa-facebook"></i></a> -->
@@ -304,3 +360,8 @@
             </div>
         </div>
     </footer>
+
+
+
+
+
