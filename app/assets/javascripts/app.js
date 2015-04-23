@@ -18,8 +18,9 @@ $(document).on('page:change',function() {
       data: {restaurant: $('input.restaurant').val(), citystate: $('input.location').val() }
     })
     request.done(function(data) {
-      console.log(data.x)
-      console.log(data.z)
+      for (var i = 0; i < data.trending_businesses.length; i++) {
+        $('div .trending_restaurants ul').append('<li>'+data.trending_businesses[i]+'</li>')
+      }
       for(var key in data.restaurant_search_results) {
         $('.row ol.result_restaurants').append('<li><a class="clarified_restaurant" data-id="'+key+'" href="/welcome/'+key+'">'+data.restaurant_search_results[key]+'</a></li>')
 

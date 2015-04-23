@@ -38,7 +38,7 @@ class WelcomeController < ApplicationController
     p "*" * 99
     p @z
 
-    render :json => {restaurant_search_results: @restaurant_search_results, api_search_results: api_search, x: @y, z: @business_names }
+    render :json => {restaurant_search_results: @restaurant_search_results, api_search_results: api_search, x: @y, trending_businesses: @business_names }
 
   end
 
