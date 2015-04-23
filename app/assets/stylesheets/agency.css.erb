@@ -10,12 +10,73 @@ body {
     font-weight: 100;
 }
 
-.trending_restaurants ul li {
+.arrow a {
+    border: 5px solid rgba(0,0,0,0);
+    width: 1.5em;
+    height: 1.5em;
+    background-size: 2em; /*This is based off of width*/
+}
+
+.arrow a:hover {
+  border: 5px solid #6D903C;
+}
+
+
+.arrow_container {
+  width: 100%;
+  position: absolute;
+  bottom: 6%;
+  text-align: center;
+}
+
+.arrow a {
+    border: 4px solid rgba(0,0,0,0);
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    background-color: blue;
+    background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOS45IDEzLjIiPjxwb2x5Z29uIGZpbGw9IiM2RDkwM0MiIHBvaW50cz0iOS40LDEzLjIgMCwyLjggMywwLjEgOS42LDcuNCAxNy4xLDAgMTkuOSwyLjgiLz48L3N2Zz4=) no-repeat center;
+    -webkit-transition: border-color 0.5s ease-out;
+    -moz-transition: border-color 0.5s ease-in-out;
+    -o-transition: border-color 0.5s ease-in-out;
+    -ms-transition: border-color 0.5s ease-in-out;
+    transition: border-color 0.5s ease-in-out;
+    background-size: em; /*This is based off of width*/
+}
+
+.arrow a:hover {
+    border: 4px solid #6D903C;
+}
+
+.trending_restaurants ul {
+    background-color: black;
+    margin-right: 5%;
+    margin-left: 5%;
+    padding-right: 5%;
+    padding-right: 5%;
+    opacity: .8;
+}
+
+.trend_restaurants {
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 2em !important;
-    color: white;
-    font-weight: 400;
+    color: white !important;
+    font-weight: lighter;
 }
+
+.trend_restaurants a {
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: .7em !important;
+    color: white !important;
+    font-weight: 400;
+    text-shadow: .5px .5px white;
+    text-transform: uppercase;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
 
 .text-muted {
     color: black;
@@ -433,14 +494,15 @@ section h2.section-heading {
     margin-right: 5px;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 400;
-    font-size: 3em !important;
+    font-size: 4em !important;
     font-weight: bolder !important;
     color: white !important;
     text-align: center !important;
     /*position: absolute;*/
     /*top: -128px;*/
     /*right: -131px;*/
-    text-shadow: 1px 1px #000000;
+    text-shadow: 1.2px 1.2px black;
+    letter-spacing: 0.250em;
 }
 
 section h2.section-heading-mid-div {
@@ -1196,11 +1258,12 @@ a.restaurant_given{
     margin-right: 5px;
     font-family: Montserrat, sans-serif;
     font-weight: 400;
-    font-size: 3em !important;
+    font-size: 4em !important;
     font-weight: bolder !important;
     color: white !important;
     text-align: right !important;
-    text-shadow: 1px 1px #000000;
+    text-shadow: 1.2px 1.2px #000000;
+    letter-spacing: 0.250em;
 }
 .service-heading-9{
     font-size: 18px;
